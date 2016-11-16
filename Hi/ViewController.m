@@ -65,6 +65,10 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    chatViewController * chatview = [[chatViewController alloc]init];
+    chatview.title = @"尹青云";
+    chatview.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:chatview animated:YES];
 }
 
 /**设置tabbar*/

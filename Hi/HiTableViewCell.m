@@ -40,7 +40,7 @@
         _lastDialogue.textColor = [CorlorTransform colorWithHexString:@"#949494"];
         CGSize size_lastDialogue = [_lastDialogue.text sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:_lastDialogue.font,NSFontAttributeName, nil]];
         
-        float width_lastDialogue = screenwidth-_nickname.frame.origin.x-50;
+        float width_lastDialogue = screenwidth-_nickname.frame.origin.x-10;
         if (size_lastDialogue.width>width_lastDialogue) {
             size_lastDialogue.width = width_lastDialogue;
         }
