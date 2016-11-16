@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol headTableViewAction <NSObject>
+
+- (void)didSelectRowAtIndexPath:(NSInteger)row;
+
+@end
+
 @interface headView : UIView
+
+@property(nonatomic,weak)id<headTableViewAction>delegate;
 
 @end

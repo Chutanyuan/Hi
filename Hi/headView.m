@@ -39,11 +39,16 @@
     }
     NSArray * array = @[@"关注男生",@"关注女生",@"我关注的",@"粉丝"];
     cell.textLabel.text = array[indexPath.row];
-    
+    cell.imageView.image = [UIImage imageNamed:@"4"];
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 50;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self.delegate didSelectRowAtIndexPath:indexPath.row];
 }
 @end

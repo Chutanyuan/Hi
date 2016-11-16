@@ -62,6 +62,11 @@
 		2B5FB47D1DDC5B2400C80152 /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B5FB45C1DDC5B2400C80152 /* 9.png */; };
 		2B5FB4801DDC5B4E00C80152 /* ContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5FB47F1DDC5B4E00C80152 /* ContactTableViewCell.m */; };
 		2B5FB4841DDC602800C80152 /* headView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5FB4831DDC602800C80152 /* headView.m */; };
+		2BFCAB651DDC66830023FF1C /* followManViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BFCAB641DDC66830023FF1C /* followManViewController.m */; };
+		2BFCAB681DDC668E0023FF1C /* followWomanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BFCAB671DDC668E0023FF1C /* followWomanViewController.m */; };
+		2BFCAB6B1DDC669D0023FF1C /* myFollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BFCAB6A1DDC669D0023FF1C /* myFollowViewController.m */; };
+		2BFCAB6E1DDC66A50023FF1C /* fansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BFCAB6D1DDC66A50023FF1C /* fansViewController.m */; };
+		2BFCAB721DDC6D410023FF1C /* playerMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BFCAB711DDC6D410023FF1C /* playerMessageViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +174,16 @@
 		2B5FB47F1DDC5B4E00C80152 /* ContactTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactTableViewCell.m; sourceTree = "<group>"; };
 		2B5FB4821DDC602800C80152 /* headView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = headView.h; sourceTree = "<group>"; };
 		2B5FB4831DDC602800C80152 /* headView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = headView.m; sourceTree = "<group>"; };
+		2BFCAB631DDC66830023FF1C /* followManViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = followManViewController.h; sourceTree = "<group>"; };
+		2BFCAB641DDC66830023FF1C /* followManViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = followManViewController.m; sourceTree = "<group>"; };
+		2BFCAB661DDC668E0023FF1C /* followWomanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = followWomanViewController.h; sourceTree = "<group>"; };
+		2BFCAB671DDC668E0023FF1C /* followWomanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = followWomanViewController.m; sourceTree = "<group>"; };
+		2BFCAB691DDC669D0023FF1C /* myFollowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myFollowViewController.h; sourceTree = "<group>"; };
+		2BFCAB6A1DDC669D0023FF1C /* myFollowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myFollowViewController.m; sourceTree = "<group>"; };
+		2BFCAB6C1DDC66A50023FF1C /* fansViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fansViewController.h; sourceTree = "<group>"; };
+		2BFCAB6D1DDC66A50023FF1C /* fansViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = fansViewController.m; sourceTree = "<group>"; };
+		2BFCAB701DDC6D410023FF1C /* playerMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = playerMessageViewController.h; sourceTree = "<group>"; };
+		2BFCAB711DDC6D410023FF1C /* playerMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = playerMessageViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -321,6 +336,11 @@
 			children = (
 				2B5FB4061DDC406C00C80152 /* friendViewController.h */,
 				2B5FB4071DDC406C00C80152 /* friendViewController.m */,
+				2BFCAB621DDC663B0023FF1C /* 关注男生 */,
+				2BFCAB611DDC66340023FF1C /* 关注女生 */,
+				2BFCAB601DDC662D0023FF1C /* 我关注的 */,
+				2BFCAB5F1DDC66220023FF1C /* 粉丝 */,
+				2BFCAB6F1DDC6D000023FF1C /* 详细信息 */,
 				2B5FB4811DDC600900C80152 /* cell headerView */,
 			);
 			name = "好友";
@@ -479,6 +499,51 @@
 				2B5FB4831DDC602800C80152 /* headView.m */,
 			);
 			name = "cell headerView";
+			sourceTree = "<group>";
+		};
+		2BFCAB5F1DDC66220023FF1C /* 粉丝 */ = {
+			isa = PBXGroup;
+			children = (
+				2BFCAB6C1DDC66A50023FF1C /* fansViewController.h */,
+				2BFCAB6D1DDC66A50023FF1C /* fansViewController.m */,
+			);
+			name = "粉丝";
+			sourceTree = "<group>";
+		};
+		2BFCAB601DDC662D0023FF1C /* 我关注的 */ = {
+			isa = PBXGroup;
+			children = (
+				2BFCAB691DDC669D0023FF1C /* myFollowViewController.h */,
+				2BFCAB6A1DDC669D0023FF1C /* myFollowViewController.m */,
+			);
+			name = "我关注的";
+			sourceTree = "<group>";
+		};
+		2BFCAB611DDC66340023FF1C /* 关注女生 */ = {
+			isa = PBXGroup;
+			children = (
+				2BFCAB661DDC668E0023FF1C /* followWomanViewController.h */,
+				2BFCAB671DDC668E0023FF1C /* followWomanViewController.m */,
+			);
+			name = "关注女生";
+			sourceTree = "<group>";
+		};
+		2BFCAB621DDC663B0023FF1C /* 关注男生 */ = {
+			isa = PBXGroup;
+			children = (
+				2BFCAB631DDC66830023FF1C /* followManViewController.h */,
+				2BFCAB641DDC66830023FF1C /* followManViewController.m */,
+			);
+			name = "关注男生";
+			sourceTree = "<group>";
+		};
+		2BFCAB6F1DDC6D000023FF1C /* 详细信息 */ = {
+			isa = PBXGroup;
+			children = (
+				2BFCAB701DDC6D410023FF1C /* playerMessageViewController.h */,
+				2BFCAB711DDC6D410023FF1C /* playerMessageViewController.m */,
+			);
+			name = "详细信息";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -642,9 +707,12 @@
 				2B5FB4631DDC5B2400C80152 /* JSONHTTPClient.m in Sources */,
 				2B5FB4171DDC4D5600C80152 /* FontOutSystem.m in Sources */,
 				2B5FB4801DDC5B4E00C80152 /* ContactTableViewCell.m in Sources */,
+				2BFCAB6B1DDC669D0023FF1C /* myFollowViewController.m in Sources */,
 				2B5FB3D31DDC379700C80152 /* Hi.xcdatamodeld in Sources */,
 				2B5FB4611DDC5B2400C80152 /* NSArray+JSONModel.m in Sources */,
 				2B5FB4651DDC5B2400C80152 /* JSONKeyMapper.m in Sources */,
+				2BFCAB681DDC668E0023FF1C /* followWomanViewController.m in Sources */,
+				2BFCAB6E1DDC66A50023FF1C /* fansViewController.m in Sources */,
 				2B5FB4841DDC602800C80152 /* headView.m in Sources */,
 				2B5FB3CD1DDC379700C80152 /* ViewController.m in Sources */,
 				2B5FB4081DDC406C00C80152 /* friendViewController.m in Sources */,
@@ -652,6 +720,7 @@
 				2B5FB45E1DDC5B2400C80152 /* JSONModelArray.m in Sources */,
 				2B5FB4121DDC46D700C80152 /* HiTableViewCell.m in Sources */,
 				2B5FB4621DDC5B2400C80152 /* JSONAPI.m in Sources */,
+				2BFCAB651DDC66830023FF1C /* followManViewController.m in Sources */,
 				2B5FB4661DDC5B2400C80152 /* JSONValueTransformer.m in Sources */,
 				2B5FB4261DDC5AF500C80152 /* ContactDataHelper.m in Sources */,
 				2B5FB4201DDC5AD700C80152 /* ContactModel.m in Sources */,
@@ -659,6 +728,7 @@
 				2B5FB3C71DDC379700C80152 /* main.m in Sources */,
 				2B5FB45D1DDC5B2400C80152 /* JSONModel.m in Sources */,
 				2B5FB4601DDC5B2400C80152 /* JSONModelError.m in Sources */,
+				2BFCAB721DDC6D410023FF1C /* playerMessageViewController.m in Sources */,
 				2B5FB40B1DDC40B500C80152 /* NewEventsViewController.m in Sources */,
 				2B5FB4641DDC5B2400C80152 /* JSONModel+networking.m in Sources */,
 				2B5FB3FF1DDC3C3A00C80152 /* CorlorTransform.m in Sources */,
@@ -904,6 +974,7 @@
 				2B5FB3F41DDC379700C80152 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2B5FB3F51DDC379700C80152 /* Build configuration list for PBXNativeTarget "HiTests" */ = {
 			isa = XCConfigurationList;
@@ -912,6 +983,7 @@
 				2B5FB3F71DDC379700C80152 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2B5FB3F81DDC379700C80152 /* Build configuration list for PBXNativeTarget "HiUITests" */ = {
 			isa = XCConfigurationList;
@@ -920,6 +992,7 @@
 				2B5FB3FA1DDC379700C80152 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

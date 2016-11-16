@@ -11,10 +11,14 @@
 #import "ContactTableViewCell.h"
 #import "ContactDataHelper.h"//根据拼音A~Z~#进行排序的tool
 #import "headView.h"
-
+#import "followManViewController.h"
+#import "followWomanViewController.h"
+#import "myFollowViewController.h"
+#import "fansViewController.h"
+#import "playerMessageViewController.h"
 
 @interface friendViewController ()<UITableViewDelegate,UITableViewDataSource,
-UISearchBarDelegate,UISearchDisplayDelegate>
+UISearchBarDelegate,UISearchDisplayDelegate,headTableViewAction>
 {
     NSArray *_rowArr;//row arr
     NSArray *_sectionArr;//section arr
@@ -51,6 +55,9 @@ UISearchBarDelegate,UISearchDisplayDelegate>
     //设置导航条颜色 标题颜色
     [self.navigationController.navigationBar setBarTintColor:[CorlorTransform colorWithHexString:@"#393A3F"]];
     self.navigationController.navigationBar.titleTextAttributes=[NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
+    
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+
     // Do any additional setup after loading the view, typically from a nib.
    
     
@@ -128,6 +135,7 @@ UISearchBarDelegate,UISearchDisplayDelegate>
     if (section==0) {
         
         headView * view = [[headView alloc]initWithFrame:CGRectMake(0, 0, screenwidth, 222)];
+        view.delegate = self;
         view.backgroundColor = [UIColor whiteColor];
         
         UILabel * label = [[UILabel alloc] init];
@@ -193,31 +201,17 @@ UISearchBarDelegate,UISearchDisplayDelegate>
     
     return cell;
 }
-
-#pragma mark searchBar delegate
-//searchBar开始编辑时改变取消按钮的文字
-- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
-    NSArray *subViews;
-    subViews = [(searchBar.subviews[0]) subviews];
-    for (id view in subViews) {
-        if ([view isKindOfClass:[UIButton class]]) {
-            UIButton* cancelbutton = (UIButton* )view;
-            [cancelbutton setTitle:@"取消" forState:UIControlStateNormal];
-            break;
-        }
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    playerMessageViewController * player = [[playerMessageViewController alloc]init];
+    if (tableView==_searchDisplayController.searchResultsTableView){
+        player.title = [_searchResultArr[indexPath.row] valueForKey:@"name"];
+    }else{
+        ContactModel *model=_rowArr[indexPath.section][indexPath.row];
+        player.title = model.name;
     }
-    searchBar.showsCancelButton = YES;
-}
-- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
-    return YES;
-}
-- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar{
-    return YES;
-}
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
-    //取消
-    [searchBar resignFirstResponder];
-    searchBar.showsCancelButton = NO;
+    player.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:player animated:YES];
 }
 
 #pragma mark searchDisplayController delegate
@@ -261,5 +255,44 @@ UISearchBarDelegate,UISearchDisplayDelegate>
     [_searchResultArr removeAllObjects];
     [_searchResultArr addObjectsFromArray:tempResults];
 }
-
+-(void)didSelectRowAtIndexPath:(NSInteger)row
+{
+    switch (row) {
+        case 0:
+        {
+            followManViewController * man = [[followManViewController alloc]init];
+            man.hidesBottomBarWhenPushed = YES;
+            man.title = @"我关注的";
+            [self.navigationController pushViewController:man animated:YES];
+        }
+            break;
+        case 1:
+        {
+            followWomanViewController * women = [[followWomanViewController alloc]init];
+            women.hidesBottomBarWhenPushed = YES;
+            women.title = @"我关注的";
+            [self.navigationController pushViewController:women animated:YES];
+        }
+            break;
+        case 2:
+        {
+            myFollowViewController * my = [[myFollowViewController alloc]init];
+            my.hidesBottomBarWhenPushed = YES;
+            my.title = @"我关注的";
+            [self.navigationController pushViewController:my animated:YES];
+        }
+            break;
+        case 3:
+        {
+            fansViewController * fans = [[fansViewController alloc]init];
+            fans.hidesBottomBarWhenPushed = YES;
+            fans.title = @"粉丝";
+            [self.navigationController pushViewController:fans animated:YES];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
 @end
