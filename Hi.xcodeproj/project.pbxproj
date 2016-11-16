@@ -16,6 +16,13 @@
 		2B5FB3D81DDC379700C80152 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B5FB3D61DDC379700C80152 /* LaunchScreen.storyboard */; };
 		2B5FB3E31DDC379700C80152 /* HiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5FB3E21DDC379700C80152 /* HiTests.m */; };
 		2B5FB3EE1DDC379700C80152 /* HiUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5FB3ED1DDC379700C80152 /* HiUITests.m */; };
+		2B5FB3FF1DDC3C3A00C80152 /* CorlorTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5FB3FE1DDC3C3A00C80152 /* CorlorTransform.m */; };
+		2B5FB4081DDC406C00C80152 /* friendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5FB4071DDC406C00C80152 /* friendViewController.m */; };
+		2B5FB40B1DDC40B500C80152 /* NewEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5FB40A1DDC40B500C80152 /* NewEventsViewController.m */; };
+		2B5FB40E1DDC40BF00C80152 /* mineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5FB40D1DDC40BF00C80152 /* mineViewController.m */; };
+		2B5FB4121DDC46D700C80152 /* HiTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5FB4111DDC46D700C80152 /* HiTableViewCell.m */; };
+		2B5FB4171DDC4D5600C80152 /* FontOutSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5FB4161DDC4D5600C80152 /* FontOutSystem.m */; };
+		2B5FB4191DDC4F5800C80152 /* FZZDXJW.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 2B5FB4181DDC4F5800C80152 /* FZZDXJW.TTF */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +60,20 @@
 		2B5FB3E91DDC379700C80152 /* HiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B5FB3ED1DDC379700C80152 /* HiUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HiUITests.m; sourceTree = "<group>"; };
 		2B5FB3EF1DDC379700C80152 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2B5FB3FD1DDC3C3A00C80152 /* CorlorTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorlorTransform.h; sourceTree = "<group>"; };
+		2B5FB3FE1DDC3C3A00C80152 /* CorlorTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CorlorTransform.m; sourceTree = "<group>"; };
+		2B5FB4011DDC3E7900C80152 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = ../PrefixHeader.pch; sourceTree = "<group>"; };
+		2B5FB4061DDC406C00C80152 /* friendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = friendViewController.h; sourceTree = "<group>"; };
+		2B5FB4071DDC406C00C80152 /* friendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = friendViewController.m; sourceTree = "<group>"; };
+		2B5FB4091DDC40B500C80152 /* NewEventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewEventsViewController.h; sourceTree = "<group>"; };
+		2B5FB40A1DDC40B500C80152 /* NewEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewEventsViewController.m; sourceTree = "<group>"; };
+		2B5FB40C1DDC40BF00C80152 /* mineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mineViewController.h; sourceTree = "<group>"; };
+		2B5FB40D1DDC40BF00C80152 /* mineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mineViewController.m; sourceTree = "<group>"; };
+		2B5FB4101DDC46D700C80152 /* HiTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HiTableViewCell.h; sourceTree = "<group>"; };
+		2B5FB4111DDC46D700C80152 /* HiTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HiTableViewCell.m; sourceTree = "<group>"; };
+		2B5FB4151DDC4D5600C80152 /* FontOutSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontOutSystem.h; sourceTree = "<group>"; };
+		2B5FB4161DDC4D5600C80152 /* FontOutSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontOutSystem.m; sourceTree = "<group>"; };
+		2B5FB4181DDC4F5800C80152 /* FZZDXJW.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = FZZDXJW.TTF; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,8 +126,8 @@
 			children = (
 				2B5FB3C81DDC379700C80152 /* AppDelegate.h */,
 				2B5FB3C91DDC379700C80152 /* AppDelegate.m */,
-				2B5FB3CB1DDC379700C80152 /* ViewController.h */,
-				2B5FB3CC1DDC379700C80152 /* ViewController.m */,
+				2B5FB3FB1DDC3B2F00C80152 /* viewcontroller */,
+				2B5FB3FC1DDC3C1D00C80152 /* tool */,
 				2B5FB3CE1DDC379700C80152 /* Main.storyboard */,
 				2B5FB3D41DDC379700C80152 /* Assets.xcassets */,
 				2B5FB3D61DDC379700C80152 /* LaunchScreen.storyboard */,
@@ -121,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				2B5FB3C61DDC379700C80152 /* main.m */,
+				2B5FB4011DDC3E7900C80152 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -141,6 +163,75 @@
 				2B5FB3EF1DDC379700C80152 /* Info.plist */,
 			);
 			path = HiUITests;
+			sourceTree = "<group>";
+		};
+		2B5FB3FB1DDC3B2F00C80152 /* viewcontroller */ = {
+			isa = PBXGroup;
+			children = (
+				2B5FB4051DDC404D00C80152 /* 好友 */,
+				2B5FB4041DDC404600C80152 /* 新鲜 */,
+				2B5FB4031DDC403D00C80152 /* 我 */,
+				2B5FB4021DDC402E00C80152 /* 嗨 */,
+			);
+			name = viewcontroller;
+			sourceTree = "<group>";
+		};
+		2B5FB3FC1DDC3C1D00C80152 /* tool */ = {
+			isa = PBXGroup;
+			children = (
+				2B5FB3FD1DDC3C3A00C80152 /* CorlorTransform.h */,
+				2B5FB3FE1DDC3C3A00C80152 /* CorlorTransform.m */,
+				2B5FB4151DDC4D5600C80152 /* FontOutSystem.h */,
+				2B5FB4161DDC4D5600C80152 /* FontOutSystem.m */,
+				2B5FB4181DDC4F5800C80152 /* FZZDXJW.TTF */,
+			);
+			name = tool;
+			sourceTree = "<group>";
+		};
+		2B5FB4021DDC402E00C80152 /* 嗨 */ = {
+			isa = PBXGroup;
+			children = (
+				2B5FB3CB1DDC379700C80152 /* ViewController.h */,
+				2B5FB3CC1DDC379700C80152 /* ViewController.m */,
+				2B5FB40F1DDC46C000C80152 /* cell */,
+			);
+			name = "嗨";
+			sourceTree = "<group>";
+		};
+		2B5FB4031DDC403D00C80152 /* 我 */ = {
+			isa = PBXGroup;
+			children = (
+				2B5FB40C1DDC40BF00C80152 /* mineViewController.h */,
+				2B5FB40D1DDC40BF00C80152 /* mineViewController.m */,
+			);
+			name = "我";
+			sourceTree = "<group>";
+		};
+		2B5FB4041DDC404600C80152 /* 新鲜 */ = {
+			isa = PBXGroup;
+			children = (
+				2B5FB4091DDC40B500C80152 /* NewEventsViewController.h */,
+				2B5FB40A1DDC40B500C80152 /* NewEventsViewController.m */,
+			);
+			name = "新鲜";
+			sourceTree = "<group>";
+		};
+		2B5FB4051DDC404D00C80152 /* 好友 */ = {
+			isa = PBXGroup;
+			children = (
+				2B5FB4061DDC406C00C80152 /* friendViewController.h */,
+				2B5FB4071DDC406C00C80152 /* friendViewController.m */,
+			);
+			name = "好友";
+			sourceTree = "<group>";
+		};
+		2B5FB40F1DDC46C000C80152 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				2B5FB4101DDC46D700C80152 /* HiTableViewCell.h */,
+				2B5FB4111DDC46D700C80152 /* HiTableViewCell.m */,
+			);
+			name = cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,7 +301,8 @@
 				TargetAttributes = {
 					2B5FB3C11DDC379700C80152 = {
 						CreatedOnToolsVersion = 8.0;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = 2YW5V6RTUA;
+						ProvisioningStyle = Manual;
 					};
 					2B5FB3DD1DDC379700C80152 = {
 						CreatedOnToolsVersion = 8.0;
@@ -251,6 +343,7 @@
 			files = (
 				2B5FB3D81DDC379700C80152 /* LaunchScreen.storyboard in Resources */,
 				2B5FB3D51DDC379700C80152 /* Assets.xcassets in Resources */,
+				2B5FB4191DDC4F5800C80152 /* FZZDXJW.TTF in Resources */,
 				2B5FB3D01DDC379700C80152 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,10 +369,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B5FB4171DDC4D5600C80152 /* FontOutSystem.m in Sources */,
 				2B5FB3D31DDC379700C80152 /* Hi.xcdatamodeld in Sources */,
 				2B5FB3CD1DDC379700C80152 /* ViewController.m in Sources */,
+				2B5FB4081DDC406C00C80152 /* friendViewController.m in Sources */,
 				2B5FB3CA1DDC379700C80152 /* AppDelegate.m in Sources */,
+				2B5FB4121DDC46D700C80152 /* HiTableViewCell.m in Sources */,
 				2B5FB3C71DDC379700C80152 /* main.m in Sources */,
+				2B5FB40B1DDC40B500C80152 /* NewEventsViewController.m in Sources */,
+				2B5FB3FF1DDC3C3A00C80152 /* CorlorTransform.m in Sources */,
+				2B5FB40E1DDC40BF00C80152 /* mineViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +527,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "";
+				DEVELOPMENT_TEAM = 2YW5V6RTUA;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
 				INFOPLIST_FILE = Hi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ChuangJK.Hi;
@@ -439,6 +542,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "";
+				DEVELOPMENT_TEAM = 2YW5V6RTUA;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
 				INFOPLIST_FILE = Hi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ChuangJK.Hi;
