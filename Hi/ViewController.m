@@ -98,28 +98,28 @@
     
     UITabBarItem *hi = items[0];
     [hi setTitleTextAttributes:[NSDictionary dictionaryWithObject:[CorlorTransform colorWithHexString:@"#00A322"] forKey:NSForegroundColorAttributeName] forState:UIControlStateSelected];
-    hi.image = [[UIImage imageNamed:@"dongtai2"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    hi.selectedImage = [[UIImage imageNamed:@"dongtai"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    hi.image = [[UIImage imageNamed:@"tabbar_mainframe"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    hi.selectedImage = [[UIImage imageNamed:@"tabbar_mainframeHL"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     UITabBarItem *friend = items[1];
     [friend setTitleTextAttributes:[NSDictionary dictionaryWithObject:[CorlorTransform colorWithHexString:@"#00A322"] forKey:NSForegroundColorAttributeName] forState:UIControlStateSelected];
-    friend.image = [[UIImage imageNamed:@"pai-hang-bang@2x"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    friend.selectedImage = [[UIImage imageNamed:@"pai-hang-bang2@2x"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    friend.image = [[UIImage imageNamed:@"tabbar_contacts"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    friend.selectedImage = [[UIImage imageNamed:@"tabbar_contactsHL"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     
     UITabBarItem * newEvents = items[2];
     [newEvents setTitleTextAttributes:[NSDictionary dictionaryWithObject:[CorlorTransform colorWithHexString:@"#00A322"] forKey:NSForegroundColorAttributeName] forState:UIControlStateSelected];
     
     
-    newEvents.image = [[UIImage imageNamed:@"information"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    newEvents.selectedImage = [[UIImage imageNamed:@"information2"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    newEvents.image = [[UIImage imageNamed:@"tabbar_discover"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    newEvents.selectedImage = [[UIImage imageNamed:@"tabbar_discoverHL"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     
     
     UITabBarItem *mine = items[3];
     [mine setTitleTextAttributes:[NSDictionary dictionaryWithObject:[CorlorTransform colorWithHexString:@"#00A322"] forKey:NSForegroundColorAttributeName] forState:UIControlStateSelected];
-    mine.image = [[UIImage imageNamed:@"personal"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    mine.selectedImage = [[UIImage imageNamed:@"personal2"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    mine.image = [[UIImage imageNamed:@"tabbar_me"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    mine.selectedImage = [[UIImage imageNamed:@"tabbar_meHL"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 }
 
 - (void)didReceiveMemoryWarning {

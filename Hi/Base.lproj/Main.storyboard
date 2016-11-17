@@ -138,7 +138,7 @@
         <scene sceneID="P5s-ae-s5k">
             <objects>
                 <navigationController id="vHY-0G-0Jk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="嗨" id="pXQ-S4-9gT"/>
+                    <tabBarItem key="tabBarItem" title="嗨" image="tabbar_mainframe" selectedImage="tabbar_mainframe" id="pXQ-S4-9gT"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tZB-mM-cVt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -171,4 +171,7 @@
             <point key="canvasLocation" x="1225" y="-448"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="tabbar_mainframe" width="25" height="23"/>
+    </resources>
 </document>
