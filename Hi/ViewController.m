@@ -8,6 +8,9 @@
 
 #import "ViewController.h"
 #import "HiTableViewCell.h"
+#import <BmobSDK/Bmob.h>
+#import "RegisterViewController.h"
+
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -26,6 +29,7 @@
     [self.navigationController.navigationBar setBarTintColor:[CorlorTransform colorWithHexString:@"#393A3F"]];
     self.navigationController.navigationBar.titleTextAttributes=[NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
     // Do any additional setup after loading the view, typically from a nib.
+    [self BmobUser];
     [self tableview];
     
 }
@@ -126,6 +130,17 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+- (void)BmobUser
+{
+    BmobUser * user = [BmobUser currentUser];
+    NSLog(@"%@",user);
+    if (user == nil) {
+        RegisterViewController *lv = [self.storyboard instantiateViewControllerWithIdentifier:@"register"];
+        [self presentViewController:lv animated:YES completion:^{
+            
+        }];
+    }
+    
+}
 
 @end

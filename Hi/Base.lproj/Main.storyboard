@@ -20,18 +20,37 @@
                         <segue destination="VKM-KM-4EX" kind="relationship" relationship="viewControllers" id="Ajv-JS-Fjn"/>
                         <segue destination="d3A-BV-UxN" kind="relationship" relationship="viewControllers" id="qZS-XQ-xgI"/>
                         <segue destination="yPX-5k-Gyj" kind="relationship" relationship="viewControllers" id="yJQ-pL-A5M"/>
+                        <segue destination="N9W-XN-Pyr" kind="modal" id="1ES-KR-hwZ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dDH-eV-MDN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-735" y="67"/>
         </scene>
+        <!--Register View Controller-->
+        <scene sceneID="0s1-jU-qzC">
+            <objects>
+                <viewController storyboardIdentifier="register" id="N9W-XN-Pyr" customClass="RegisterViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TTc-bJ-BRF"/>
+                        <viewControllerLayoutGuide type="bottom" id="V4Z-HM-DeU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eRK-Vd-r4Q">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OCI-ae-gP2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-735.20000000000005" y="834.33283358320841"/>
+        </scene>
         <!--我-->
         <scene sceneID="TxF-PE-ddb">
             <objects>
                 <navigationController id="yPX-5k-Gyj" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="我" id="DIm-UA-Ejc"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lWM-DY-RE1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lWM-DY-RE1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -67,7 +86,7 @@
             <objects>
                 <navigationController id="d3A-BV-UxN" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="新鲜" id="kKt-RB-pJ1"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7um-re-iqm">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7um-re-iqm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -103,7 +122,7 @@
             <objects>
                 <navigationController id="VKM-KM-4EX" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="好友" id="LSx-hw-e5J"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6E6-xT-l6u">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6E6-xT-l6u">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -139,7 +158,7 @@
             <objects>
                 <navigationController id="vHY-0G-0Jk" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="嗨" image="tabbar_mainframe" selectedImage="tabbar_mainframe" id="pXQ-S4-9gT"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tZB-mM-cVt">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="tZB-mM-cVt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

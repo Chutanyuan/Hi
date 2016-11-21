@@ -68,6 +68,20 @@
 		2B7EDFAE1DE2AB3F008CB078 /* CurrentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7EDFAD1DE2AB3F008CB078 /* CurrentViewController.m */; };
 		2B7EDFB11DE2AB49008CB078 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7EDFB01DE2AB49008CB078 /* HelpViewController.m */; };
 		2B7EDFB41DE2AB57008CB078 /* AboutOurViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7EDFB31DE2AB57008CB078 /* AboutOurViewController.m */; };
+		2B7EDFB71DE2DACE008CB078 /* BmobSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B7EDFB61DE2DACE008CB078 /* BmobSDK.framework */; };
+		2B7EDFBA1DE2DAFC008CB078 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B7EDFB91DE2DAFC008CB078 /* CoreLocation.framework */; };
+		2B7EDFBC1DE2DB08008CB078 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B7EDFBB1DE2DB08008CB078 /* Security.framework */; };
+		2B7EDFBE1DE2DB11008CB078 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B7EDFBD1DE2DB11008CB078 /* CoreGraphics.framework */; };
+		2B7EDFC01DE2DB1C008CB078 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B7EDFBF1DE2DB1C008CB078 /* MobileCoreServices.framework */; };
+		2B7EDFC21DE2DB24008CB078 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B7EDFC11DE2DB24008CB078 /* CFNetwork.framework */; };
+		2B7EDFC41DE2DB2D008CB078 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B7EDFC31DE2DB2D008CB078 /* CoreTelephony.framework */; };
+		2B7EDFC61DE2DB37008CB078 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B7EDFC51DE2DB37008CB078 /* SystemConfiguration.framework */; };
+		2B7EDFC81DE2DB3F008CB078 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B7EDFC71DE2DB3F008CB078 /* libz.1.2.5.tbd */; };
+		2B7EDFCA1DE2DB48008CB078 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B7EDFC91DE2DB48008CB078 /* libicucore.tbd */; };
+		2B7EDFCC1DE2DB51008CB078 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B7EDFCB1DE2DB51008CB078 /* libsqlite3.tbd */; };
+		2B7EDFCE1DE2DD57008CB078 /* BmobMessageSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B7EDFCD1DE2DD57008CB078 /* BmobMessageSDK.framework */; };
+		2B7EDFD01DE2DD75008CB078 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B7EDFCF1DE2DD75008CB078 /* JavaScriptCore.framework */; };
+		2B7EDFD61DE2E120008CB078 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7EDFD51DE2E120008CB078 /* RegisterViewController.m */; };
 		2BFCAB651DDC66830023FF1C /* followManViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BFCAB641DDC66830023FF1C /* followManViewController.m */; };
 		2BFCAB681DDC668E0023FF1C /* followWomanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BFCAB671DDC668E0023FF1C /* followWomanViewController.m */; };
 		2BFCAB6B1DDC669D0023FF1C /* myFollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BFCAB6A1DDC669D0023FF1C /* myFollowViewController.m */; };
@@ -195,6 +209,21 @@
 		2B7EDFB01DE2AB49008CB078 /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
 		2B7EDFB21DE2AB57008CB078 /* AboutOurViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutOurViewController.h; sourceTree = "<group>"; };
 		2B7EDFB31DE2AB57008CB078 /* AboutOurViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutOurViewController.m; sourceTree = "<group>"; };
+		2B7EDFB61DE2DACE008CB078 /* BmobSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BmobSDK.framework; sourceTree = "<group>"; };
+		2B7EDFB91DE2DAFC008CB078 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		2B7EDFBB1DE2DB08008CB078 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		2B7EDFBD1DE2DB11008CB078 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2B7EDFBF1DE2DB1C008CB078 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		2B7EDFC11DE2DB24008CB078 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		2B7EDFC31DE2DB2D008CB078 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		2B7EDFC51DE2DB37008CB078 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		2B7EDFC71DE2DB3F008CB078 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
+		2B7EDFC91DE2DB48008CB078 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		2B7EDFCB1DE2DB51008CB078 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		2B7EDFCD1DE2DD57008CB078 /* BmobMessageSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BmobMessageSDK.framework; sourceTree = "<group>"; };
+		2B7EDFCF1DE2DD75008CB078 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		2B7EDFD41DE2E120008CB078 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		2B7EDFD51DE2E120008CB078 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		2BFCAB631DDC66830023FF1C /* followManViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = followManViewController.h; sourceTree = "<group>"; };
 		2BFCAB641DDC66830023FF1C /* followManViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = followManViewController.m; sourceTree = "<group>"; };
 		2BFCAB661DDC668E0023FF1C /* followWomanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = followWomanViewController.h; sourceTree = "<group>"; };
@@ -212,6 +241,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B7EDFBA1DE2DAFC008CB078 /* CoreLocation.framework in Frameworks */,
+				2B7EDFD01DE2DD75008CB078 /* JavaScriptCore.framework in Frameworks */,
+				2B7EDFC61DE2DB37008CB078 /* SystemConfiguration.framework in Frameworks */,
+				2B7EDFCC1DE2DB51008CB078 /* libsqlite3.tbd in Frameworks */,
+				2B7EDFCA1DE2DB48008CB078 /* libicucore.tbd in Frameworks */,
+				2B7EDFC81DE2DB3F008CB078 /* libz.1.2.5.tbd in Frameworks */,
+				2B7EDFC41DE2DB2D008CB078 /* CoreTelephony.framework in Frameworks */,
+				2B7EDFC21DE2DB24008CB078 /* CFNetwork.framework in Frameworks */,
+				2B7EDFC01DE2DB1C008CB078 /* MobileCoreServices.framework in Frameworks */,
+				2B7EDFCE1DE2DD57008CB078 /* BmobMessageSDK.framework in Frameworks */,
+				2B7EDFBE1DE2DB11008CB078 /* CoreGraphics.framework in Frameworks */,
+				2B7EDFBC1DE2DB08008CB078 /* Security.framework in Frameworks */,
+				2B7EDFB71DE2DACE008CB078 /* BmobSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +314,7 @@
 				2B5FB3E11DDC379700C80152 /* HiTests */,
 				2B5FB3EC1DDC379700C80152 /* HiUITests */,
 				2B5FB3C31DDC379700C80152 /* Products */,
+				2B7EDFB81DE2DAFC008CB078 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -290,9 +333,11 @@
 			children = (
 				2B5FB3C81DDC379700C80152 /* AppDelegate.h */,
 				2B5FB3C91DDC379700C80152 /* AppDelegate.m */,
+				2B7EDFD31DE2E10B008CB078 /* loginRegister */,
 				2B5FB3FB1DDC3B2F00C80152 /* viewcontroller */,
 				2B5FB41A1DDC530600C80152 /* chatviewcontroller */,
 				2B5FB3FC1DDC3C1D00C80152 /* tool */,
+				2B7EDFB51DE2DA65008CB078 /* BMOB */,
 				2B5FB3CE1DDC379700C80152 /* Main.storyboard */,
 				2B5FB3D41DDC379700C80152 /* Assets.xcassets */,
 				2B5FB3D61DDC379700C80152 /* LaunchScreen.storyboard */,
@@ -609,6 +654,42 @@
 			name = "帐号与安全";
 			sourceTree = "<group>";
 		};
+		2B7EDFB51DE2DA65008CB078 /* BMOB */ = {
+			isa = PBXGroup;
+			children = (
+				2B7EDFCD1DE2DD57008CB078 /* BmobMessageSDK.framework */,
+				2B7EDFB61DE2DACE008CB078 /* BmobSDK.framework */,
+			);
+			name = BMOB;
+			sourceTree = "<group>";
+		};
+		2B7EDFB81DE2DAFC008CB078 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2B7EDFCF1DE2DD75008CB078 /* JavaScriptCore.framework */,
+				2B7EDFCB1DE2DB51008CB078 /* libsqlite3.tbd */,
+				2B7EDFC91DE2DB48008CB078 /* libicucore.tbd */,
+				2B7EDFC71DE2DB3F008CB078 /* libz.1.2.5.tbd */,
+				2B7EDFC51DE2DB37008CB078 /* SystemConfiguration.framework */,
+				2B7EDFC31DE2DB2D008CB078 /* CoreTelephony.framework */,
+				2B7EDFC11DE2DB24008CB078 /* CFNetwork.framework */,
+				2B7EDFBF1DE2DB1C008CB078 /* MobileCoreServices.framework */,
+				2B7EDFBD1DE2DB11008CB078 /* CoreGraphics.framework */,
+				2B7EDFBB1DE2DB08008CB078 /* Security.framework */,
+				2B7EDFB91DE2DAFC008CB078 /* CoreLocation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2B7EDFD31DE2E10B008CB078 /* loginRegister */ = {
+			isa = PBXGroup;
+			children = (
+				2B7EDFD41DE2E120008CB078 /* RegisterViewController.h */,
+				2B7EDFD51DE2E120008CB078 /* RegisterViewController.m */,
+			);
+			name = loginRegister;
+			sourceTree = "<group>";
+		};
 		2BFCAB5F1DDC66220023FF1C /* 粉丝 */ = {
 			isa = PBXGroup;
 			children = (
@@ -832,6 +913,7 @@
 				2B5FB4201DDC5AD700C80152 /* ContactModel.m in Sources */,
 				2B5FB45F1DDC5B2400C80152 /* JSONModelClassProperty.m in Sources */,
 				2B7EDFA51DE2AABD008CB078 /* AccountSafeViewController.m in Sources */,
+				2B7EDFD61DE2E120008CB078 /* RegisterViewController.m in Sources */,
 				2B7EDFB11DE2AB49008CB078 /* HelpViewController.m in Sources */,
 				2B0972281DDD81360047C655 /* newEventsTableViewCell.m in Sources */,
 				2B5FB3C71DDC379700C80152 /* main.m in Sources */,
@@ -999,6 +1081,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "";
 				DEVELOPMENT_TEAM = 2YW5V6RTUA;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Hi",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
 				INFOPLIST_FILE = Hi/Info.plist;
@@ -1015,6 +1101,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "";
 				DEVELOPMENT_TEAM = 2YW5V6RTUA;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Hi",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
 				INFOPLIST_FILE = Hi/Info.plist;
