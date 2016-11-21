@@ -16,6 +16,7 @@
 @property(nonatomic,strong)UIImageView * contentImage;
 @property(nonatomic,strong)UILabel * timeWithNow;
 @property(nonatomic,strong)UIButton * ZanOrPinglun;
+@property(nonatomic,strong)UIView * grayview;
 
 @end
 
@@ -40,7 +41,7 @@
         [self addSubview:_nickname];
         
         _contentText = [[UILabel alloc]init];
-        _contentText.text = @"嗨，我是客服月儿。";
+        _contentText.text = @"嗨，我是客服月儿嗨，我是客服月儿嗨，我是客服月儿嗨，我是客服月儿嗨，我是客服月儿嗨，我是客服月儿。";
         _contentText.numberOfLines = 0;
         _contentText.font = [FontOutSystem fontWithFangZhengSize:13.0];
         CGSize size_contentText = [_contentText.text boundingRectWithSize:CGSizeMake(screenwidth-_nickname.frame.origin.x-_headerImage.frame.size.width+20, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObjectsAndKeys:_contentText.font,NSFontAttributeName, nil] context:nil].size;
@@ -73,8 +74,87 @@
         _timeWithNow.frame = CGRectMake(_nickname.frame.origin.x, _contentImage.frame.origin.y+_contentImage.frame.size.height+10, size_timeWithNow.width, size_timeWithNow.height);
         [self addSubview:_timeWithNow];
         
+        _ZanOrPinglun = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_ZanOrPinglun setImage:[UIImage imageNamed:@"AlbumOperateMore"] forState:UIControlStateNormal];
+        _ZanOrPinglun.center = CGPointMake(screenwidth-45, _timeWithNow.center.y);
+        _ZanOrPinglun.bounds = CGRectMake(0, 0, 25, 25);
+        [_ZanOrPinglun addTarget:self action:@selector(zanAndPinglun:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:_ZanOrPinglun];
+        
+        
+        _grayview = [[UIView alloc]init];
+        _grayview.frame = CGRectMake(_ZanOrPinglun.frame.origin.x, _timeWithNow.frame.origin.y-5, 0, 30);
+        _grayview.backgroundColor = [CorlorTransform colorWithHexString:@"#464C50"];
+        _grayview.layer.cornerRadius = 5;
+        _grayview.clipsToBounds = YES;
+        [self addSubview:_grayview];
+
+        
     }
     return self;
 }
 
+
+- (void)zanAndPinglun:(UIButton *)sender
+{
+    static int i = 0;
+    i++;
+    if (i%2==1) {
+        [UIView animateWithDuration:0.3 animations:^{
+            CGRect frame = _grayview.frame;
+            _grayview.frame = CGRectMake(frame.origin.x-120, frame.origin.y , 120, 30);
+        }completion:^(BOOL finished) {
+            if (finished==YES) {
+                
+                static dispatch_once_t onceToken;
+                dispatch_once(&onceToken, ^{
+                    UIView * line = [[UIView alloc]initWithFrame:CGRectMake(_grayview.frame.size.width/2, 4, 1, _grayview.frame.size.height-8)];
+                    line.backgroundColor = [CorlorTransform colorWithHexString:@"#000000"];
+                    [_grayview addSubview:line];
+                    
+                    UIButton * zan = [UIButton buttonWithType:UIButtonTypeCustom];
+                    zan.frame = CGRectMake(0, 0, 60, 30);
+                    [zan setImage:[UIImage imageNamed:@"AlbumLike"] forState:UIControlStateNormal];
+                    [zan setTitle:@"赞" forState:UIControlStateNormal];
+                    zan.titleLabel.font = [FontOutSystem fontWithFangZhengSize:10.0];
+                    [zan addTarget:self action:@selector(zanAndPinglunTouch:) forControlEvents:UIControlEventTouchUpInside];
+                    [_grayview addSubview:zan];
+                    
+                    UIButton * pinglun = [UIButton buttonWithType:UIButtonTypeCustom];
+                    [pinglun setTitle:@"评论" forState:UIControlStateNormal];
+                    [pinglun setImage:[UIImage imageNamed:@"AlbumComment"] forState:UIControlStateNormal];
+                    pinglun.titleLabel.font = [FontOutSystem fontWithFangZhengSize:10.0];
+                    pinglun.frame = CGRectMake(60, 0, 60, 30);
+                    [pinglun addTarget:self action:@selector(zanAndPinglunTouch:) forControlEvents:UIControlEventTouchUpInside];
+                    [_grayview addSubview:pinglun];
+                });
+                
+            }else{
+                NSLog(@"不知道什么梗");
+            }
+        }];
+
+    }else{
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            _grayview.frame = CGRectMake(_ZanOrPinglun.frame.origin.x, _timeWithNow.frame.origin.y-5, 0, 30);
+        }];
+        
+    }
+}
+
+- (void)zanAndPinglunTouch:(UIButton *)sender
+{
+    if ([sender.titleLabel.text isEqualToString:@"赞"]) {
+        [sender setImage:[UIImage imageNamed:@"Like"] forState:UIControlStateNormal];
+        
+    }
+    if ([sender.titleLabel.text isEqualToString:@"评论"]) {
+        
+    }
+    [UIView animateWithDuration:0.3 animations:^{
+        _grayview.frame = CGRectMake(_ZanOrPinglun.frame.origin.x, _timeWithNow.frame.origin.y-5, 0, 30);
+    }];
+
+}
 @end

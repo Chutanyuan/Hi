@@ -1,0 +1,49 @@
+//
+//  mineHeaderTableViewCell.m
+//  Hi
+//
+//  Created by user_kevin on 16/11/18.
+//  Copyright © 2016年 user_kevin. All rights reserved.
+//
+
+#import "mineHeaderTableViewCell.h"
+
+@interface mineHeaderTableViewCell ()
+
+@property(nonatomic,strong)UIImageView * headImage;
+@property(nonatomic,strong)UILabel * nickname;
+@property(nonatomic,strong)UILabel * phoneNumber;
+
+@end
+
+@implementation mineHeaderTableViewCell
+
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        _headImage = [[UIImageView alloc]initWithFrame:CGRectMake(10, 10, 100, 100)];
+        _headImage.image = [UIImage imageNamed:@"10"];
+        [self addSubview:_headImage];
+        
+        _nickname = [[UILabel alloc]init];
+        _nickname.font = [FontOutSystem fontWithFangZhengSize:15.0];
+        _nickname.text = @"王雷雷";
+        CGSize size_nickname = [_nickname.text sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:_nickname.font,NSFontAttributeName, nil]];
+        _nickname.frame = CGRectMake(_headImage.frame.origin.x+_headImage.frame.size.width, _headImage.frame.origin.y+10, size_nickname.width, size_nickname.height);
+        [self addSubview:_nickname];
+        
+        _phoneNumber = [[UILabel alloc]init];
+        _phoneNumber.text = @"手机号: 1860845937";
+        _phoneNumber.font = [FontOutSystem fontWithFangZhengSize:15.0];
+        CGSize size_phoneNumber = [_phoneNumber.text sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:_phoneNumber.font,NSFontAttributeName, nil]];
+        _phoneNumber.frame = CGRectMake(_nickname.frame.origin.x, _headImage.frame.size.height+_headImage.frame.origin.y-size_nickname.height-10, size_phoneNumber.width, size_phoneNumber.height);
+        [self addSubview:_phoneNumber];
+        
+        CGRect frame = self.frame;
+        frame.size.height = _headImage.frame.size.height+20;
+        self.frame = frame;
+        
+    }
+    return self;
+}
+@end
