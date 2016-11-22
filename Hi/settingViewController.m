@@ -13,7 +13,8 @@
 #import "CurrentViewController.h"
 #import "HelpViewController.h"
 #import "AboutOurViewController.h"
-
+#import "RegisterViewController.h"
+#import <BmobSDK/Bmob.h>
 
 @interface settingViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -134,6 +135,9 @@
         }
     }else{
         //退出登录
+        
+        [BmobUser logout];
+        
     }
 }
 

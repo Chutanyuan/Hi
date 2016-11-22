@@ -82,6 +82,8 @@
 		2B7EDFCE1DE2DD57008CB078 /* BmobMessageSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B7EDFCD1DE2DD57008CB078 /* BmobMessageSDK.framework */; };
 		2B7EDFD01DE2DD75008CB078 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B7EDFCF1DE2DD75008CB078 /* JavaScriptCore.framework */; };
 		2B7EDFD61DE2E120008CB078 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7EDFD51DE2E120008CB078 /* RegisterViewController.m */; };
+		2B8CE0D61DE3EABB007CD9D7 /* ShowMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8CE0D41DE3EABB007CD9D7 /* ShowMessage.m */; };
+		2BCD960D1DE4249400636C45 /* loginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD960C1DE4249400636C45 /* loginViewController.m */; };
 		2BFCAB651DDC66830023FF1C /* followManViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BFCAB641DDC66830023FF1C /* followManViewController.m */; };
 		2BFCAB681DDC668E0023FF1C /* followWomanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BFCAB671DDC668E0023FF1C /* followWomanViewController.m */; };
 		2BFCAB6B1DDC669D0023FF1C /* myFollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BFCAB6A1DDC669D0023FF1C /* myFollowViewController.m */; };
@@ -224,6 +226,10 @@
 		2B7EDFCF1DE2DD75008CB078 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		2B7EDFD41DE2E120008CB078 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		2B7EDFD51DE2E120008CB078 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		2B8CE0D41DE3EABB007CD9D7 /* ShowMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowMessage.m; sourceTree = "<group>"; };
+		2B8CE0D51DE3EABB007CD9D7 /* ShowMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowMessage.h; sourceTree = "<group>"; };
+		2BCD960B1DE4249400636C45 /* loginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = loginViewController.h; sourceTree = "<group>"; };
+		2BCD960C1DE4249400636C45 /* loginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = loginViewController.m; sourceTree = "<group>"; };
 		2BFCAB631DDC66830023FF1C /* followManViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = followManViewController.h; sourceTree = "<group>"; };
 		2BFCAB641DDC66830023FF1C /* followManViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = followManViewController.m; sourceTree = "<group>"; };
 		2BFCAB661DDC668E0023FF1C /* followWomanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = followWomanViewController.h; sourceTree = "<group>"; };
@@ -389,6 +395,8 @@
 		2B5FB3FC1DDC3C1D00C80152 /* tool */ = {
 			isa = PBXGroup;
 			children = (
+				2B8CE0D51DE3EABB007CD9D7 /* ShowMessage.h */,
+				2B8CE0D41DE3EABB007CD9D7 /* ShowMessage.m */,
 				2B5FB3FD1DDC3C3A00C80152 /* CorlorTransform.h */,
 				2B5FB3FE1DDC3C3A00C80152 /* CorlorTransform.m */,
 				2B5FB4151DDC4D5600C80152 /* FontOutSystem.h */,
@@ -686,6 +694,8 @@
 			children = (
 				2B7EDFD41DE2E120008CB078 /* RegisterViewController.h */,
 				2B7EDFD51DE2E120008CB078 /* RegisterViewController.m */,
+				2BCD960B1DE4249400636C45 /* loginViewController.h */,
+				2BCD960C1DE4249400636C45 /* loginViewController.m */,
 			);
 			name = loginRegister;
 			sourceTree = "<group>";
@@ -920,6 +930,8 @@
 				2B7EDFAB1DE2AB14008CB078 /* PrivacyViewController.m in Sources */,
 				2B5FB45D1DDC5B2400C80152 /* JSONModel.m in Sources */,
 				2B5FB4601DDC5B2400C80152 /* JSONModelError.m in Sources */,
+				2B8CE0D61DE3EABB007CD9D7 /* ShowMessage.m in Sources */,
+				2BCD960D1DE4249400636C45 /* loginViewController.m in Sources */,
 				2BFCAB721DDC6D410023FF1C /* playerMessageViewController.m in Sources */,
 				2B2111F71DDEE2D400DA2825 /* mineHeaderTableViewCell.m in Sources */,
 				2B5FB40B1DDC40B500C80152 /* NewEventsViewController.m in Sources */,
@@ -1088,7 +1100,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
 				INFOPLIST_FILE = Hi/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ChuangJK.Hi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1108,7 +1120,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
 				INFOPLIST_FILE = Hi/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ChuangJK.Hi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
