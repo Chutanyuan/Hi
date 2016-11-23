@@ -137,6 +137,12 @@
         //退出登录
         
         [BmobUser logout];
+        UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+        RegisterViewController *lv = [story instantiateViewControllerWithIdentifier:@"register"];
+        [self presentViewController:lv animated:YES completion:^{
+            
+        }];
+        
         
     }
 }

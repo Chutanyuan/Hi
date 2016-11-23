@@ -21,11 +21,14 @@
 @implementation ViewController
 - (void)viewWillAppear:(BOOL)animated
 {
+    self.navigationController.navigationBarHidden = NO;
+
     [self setTabbar];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     //设置导航条颜色 标题颜色
+    
     [self.navigationController.navigationBar setBarTintColor:[CorlorTransform colorWithHexString:@"#393A3F"]];
     self.navigationController.navigationBar.titleTextAttributes=[NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
     // Do any additional setup after loading the view, typically from a nib.
@@ -133,12 +136,8 @@
 - (void)BmobUser
 {
     BmobUser * user = [BmobUser currentUser];
-    NSLog(@"%@",user);
     if (user == nil) {
-        RegisterViewController *lv = [self.storyboard instantiateViewControllerWithIdentifier:@"register"];
-        [self presentViewController:lv animated:YES completion:^{
-            
-        }];
+        [self performSegueWithIdentifier:@"register" sender:nil];
     }
     
 }

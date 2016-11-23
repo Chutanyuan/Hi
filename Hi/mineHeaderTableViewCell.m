@@ -7,6 +7,7 @@
 //
 
 #import "mineHeaderTableViewCell.h"
+#import <BmobSDK/Bmob.h>
 
 @interface mineHeaderTableViewCell ()
 
@@ -21,19 +22,26 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        BmobUser * user = [BmobUser currentUser];
+        NSDictionary * data = [user requestDataDictionary];
+        UserData * userdata = [[UserData alloc]initUserAttribute:data];
         _headImage = [[UIImageView alloc]initWithFrame:CGRectMake(10, 10, 100, 100)];
         _headImage.image = [UIImage imageNamed:@"10"];
         [self addSubview:_headImage];
         
         _nickname = [[UILabel alloc]init];
         _nickname.font = [FontOutSystem fontWithFangZhengSize:15.0];
-        _nickname.text = @"王雷雷";
+        if (userdata.nickname == nil) {
+            _nickname.text = [NSString stringWithFormat:@"未设置"];
+        }else{
+            _nickname.text = [NSString stringWithFormat:@"%@",userdata.nickname];
+        }
         CGSize size_nickname = [_nickname.text sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:_nickname.font,NSFontAttributeName, nil]];
-        _nickname.frame = CGRectMake(_headImage.frame.origin.x+_headImage.frame.size.width, _headImage.frame.origin.y+10, size_nickname.width, size_nickname.height);
+        _nickname.frame = CGRectMake(_headImage.frame.origin.x+_headImage.frame.size.width+10, _headImage.frame.origin.y+10, size_nickname.width, size_nickname.height);
         [self addSubview:_nickname];
         
         _phoneNumber = [[UILabel alloc]init];
-        _phoneNumber.text = @"手机号: 1860845937";
+        _phoneNumber.text = [NSString stringWithFormat:@"手机号:%@",userdata.username];
         _phoneNumber.font = [FontOutSystem fontWithFangZhengSize:15.0];
         CGSize size_phoneNumber = [_phoneNumber.text sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:_phoneNumber.font,NSFontAttributeName, nil]];
         _phoneNumber.frame = CGRectMake(_nickname.frame.origin.x, _headImage.frame.size.height+_headImage.frame.origin.y-size_nickname.height-10, size_phoneNumber.width, size_phoneNumber.height);

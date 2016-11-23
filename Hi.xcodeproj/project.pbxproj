@@ -83,6 +83,9 @@
 		2B7EDFD01DE2DD75008CB078 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B7EDFCF1DE2DD75008CB078 /* JavaScriptCore.framework */; };
 		2B7EDFD61DE2E120008CB078 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7EDFD51DE2E120008CB078 /* RegisterViewController.m */; };
 		2B8CE0D61DE3EABB007CD9D7 /* ShowMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8CE0D41DE3EABB007CD9D7 /* ShowMessage.m */; };
+		2BC9E2551DE56CEB00F7DAAD /* chooseSexView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC9E2541DE56CEB00F7DAAD /* chooseSexView.m */; };
+		2BC9E2591DE58D1500F7DAAD /* UserData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC9E2581DE58D1500F7DAAD /* UserData.m */; };
+		2BC9E25C1DE590F600F7DAAD /* PersonalSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC9E25B1DE590F600F7DAAD /* PersonalSettingViewController.m */; };
 		2BCD960D1DE4249400636C45 /* loginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD960C1DE4249400636C45 /* loginViewController.m */; };
 		2BFCAB651DDC66830023FF1C /* followManViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BFCAB641DDC66830023FF1C /* followManViewController.m */; };
 		2BFCAB681DDC668E0023FF1C /* followWomanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BFCAB671DDC668E0023FF1C /* followWomanViewController.m */; };
@@ -228,6 +231,12 @@
 		2B7EDFD51DE2E120008CB078 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		2B8CE0D41DE3EABB007CD9D7 /* ShowMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowMessage.m; sourceTree = "<group>"; };
 		2B8CE0D51DE3EABB007CD9D7 /* ShowMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowMessage.h; sourceTree = "<group>"; };
+		2BC9E2531DE56CEB00F7DAAD /* chooseSexView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chooseSexView.h; sourceTree = "<group>"; };
+		2BC9E2541DE56CEB00F7DAAD /* chooseSexView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = chooseSexView.m; sourceTree = "<group>"; };
+		2BC9E2571DE58D1500F7DAAD /* UserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserData.h; sourceTree = "<group>"; };
+		2BC9E2581DE58D1500F7DAAD /* UserData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserData.m; sourceTree = "<group>"; };
+		2BC9E25A1DE590F600F7DAAD /* PersonalSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalSettingViewController.h; sourceTree = "<group>"; };
+		2BC9E25B1DE590F600F7DAAD /* PersonalSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalSettingViewController.m; sourceTree = "<group>"; };
 		2BCD960B1DE4249400636C45 /* loginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = loginViewController.h; sourceTree = "<group>"; };
 		2BCD960C1DE4249400636C45 /* loginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = loginViewController.m; sourceTree = "<group>"; };
 		2BFCAB631DDC66830023FF1C /* followManViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = followManViewController.h; sourceTree = "<group>"; };
@@ -294,6 +303,8 @@
 			children = (
 				2B2111F51DDEE2D400DA2825 /* mineHeaderTableViewCell.h */,
 				2B2111F61DDEE2D400DA2825 /* mineHeaderTableViewCell.m */,
+				2BC9E2531DE56CEB00F7DAAD /* chooseSexView.h */,
+				2BC9E2541DE56CEB00F7DAAD /* chooseSexView.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -309,6 +320,7 @@
 				2B7EDF9F1DE2A7CF008CB078 /* 通用 */,
 				2B7EDF9E1DE2A7C2008CB078 /* 帮助与反馈 */,
 				2B7EDF9C1DE2A7A9008CB078 /* 关于嗨 */,
+				2BC9E25D1DE5910000F7DAAD /* 个人信息设置 */,
 			);
 			name = "设置";
 			sourceTree = "<group>";
@@ -342,6 +354,7 @@
 				2B7EDFD31DE2E10B008CB078 /* loginRegister */,
 				2B5FB3FB1DDC3B2F00C80152 /* viewcontroller */,
 				2B5FB41A1DDC530600C80152 /* chatviewcontroller */,
+				2BC9E2561DE58CFF00F7DAAD /* model */,
 				2B5FB3FC1DDC3C1D00C80152 /* tool */,
 				2B7EDFB51DE2DA65008CB078 /* BMOB */,
 				2B5FB3CE1DDC379700C80152 /* Main.storyboard */,
@@ -700,6 +713,24 @@
 			name = loginRegister;
 			sourceTree = "<group>";
 		};
+		2BC9E2561DE58CFF00F7DAAD /* model */ = {
+			isa = PBXGroup;
+			children = (
+				2BC9E2571DE58D1500F7DAAD /* UserData.h */,
+				2BC9E2581DE58D1500F7DAAD /* UserData.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		2BC9E25D1DE5910000F7DAAD /* 个人信息设置 */ = {
+			isa = PBXGroup;
+			children = (
+				2BC9E25A1DE590F600F7DAAD /* PersonalSettingViewController.h */,
+				2BC9E25B1DE590F600F7DAAD /* PersonalSettingViewController.m */,
+			);
+			name = "个人信息设置";
+			sourceTree = "<group>";
+		};
 		2BFCAB5F1DDC66220023FF1C /* 粉丝 */ = {
 			isa = PBXGroup;
 			children = (
@@ -910,8 +941,10 @@
 				2BFCAB681DDC668E0023FF1C /* followWomanViewController.m in Sources */,
 				2BFCAB6E1DDC66A50023FF1C /* fansViewController.m in Sources */,
 				2B5FB4841DDC602800C80152 /* headView.m in Sources */,
+				2BC9E2551DE56CEB00F7DAAD /* chooseSexView.m in Sources */,
 				2B5FB3CD1DDC379700C80152 /* ViewController.m in Sources */,
 				2B5FB4081DDC406C00C80152 /* friendViewController.m in Sources */,
+				2BC9E2591DE58D1500F7DAAD /* UserData.m in Sources */,
 				2B5FB3CA1DDC379700C80152 /* AppDelegate.m in Sources */,
 				2B5FB45E1DDC5B2400C80152 /* JSONModelArray.m in Sources */,
 				2B5FB4121DDC46D700C80152 /* HiTableViewCell.m in Sources */,
@@ -925,6 +958,7 @@
 				2B7EDFA51DE2AABD008CB078 /* AccountSafeViewController.m in Sources */,
 				2B7EDFD61DE2E120008CB078 /* RegisterViewController.m in Sources */,
 				2B7EDFB11DE2AB49008CB078 /* HelpViewController.m in Sources */,
+				2BC9E25C1DE590F600F7DAAD /* PersonalSettingViewController.m in Sources */,
 				2B0972281DDD81360047C655 /* newEventsTableViewCell.m in Sources */,
 				2B5FB3C71DDC379700C80152 /* main.m in Sources */,
 				2B7EDFAB1DE2AB14008CB078 /* PrivacyViewController.m in Sources */,

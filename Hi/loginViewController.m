@@ -7,6 +7,8 @@
 //
 
 #import "loginViewController.h"
+#import <BmobSDK/Bmob.h>
+
 
 @interface loginViewController ()
 
@@ -54,8 +56,8 @@
 
 
     UIButton * exitButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    exitButton.frame = CGRectMake(20, 20, 40, 40);
-    [exitButton setImage:[UIImage imageNamed:@"gonghui"] forState:UIControlStateNormal];
+    exitButton.frame = CGRectMake(20, 20, 80, 40);
+    [exitButton setTitle:@"返回注册" forState:UIControlStateNormal];
     [exitButton addTarget:self action:@selector(exitButton) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:exitButton];
     
@@ -63,7 +65,7 @@
 }
 -(void)exitButton
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 -(UIImageView *)logoImage
 {
@@ -143,10 +145,26 @@
         [_loginButton.layer setBorderColor:[UIColor blackColor].CGColor];
         [_loginButton.layer setBorderWidth:1];
         _loginButton.clipsToBounds = YES;
+        [_loginButton addTarget:self action:@selector(loginButtonCLick) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:_loginButton];
         
     }
     return _loginButton;
+}
+- (void)loginButtonCLick
+{
+    [BmobUser loginWithUsernameInBackground:_phoneNumber.text password:_password.text block:^(BmobUser *user, NSError *error) {
+        if (!error) {
+            //登录到嗨界面
+            NSUserDefaults * userdefaults = [NSUserDefaults standardUserDefaults];
+            [userdefaults setObject:@{_phoneNumber.text:@"account",_password.text:@"password"} forKey:@"userLoginMessage"];
+            [userdefaults synchronize];
+            
+            [self performSegueWithIdentifier:@"loginplayer" sender:nil];
+        }else{
+            [ShowMessage showMessage:@"登录失败"];
+        }
+    }];
 }
 
 @end

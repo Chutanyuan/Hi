@@ -22,6 +22,21 @@
     
     [Bmob registerWithAppKey:@"08451d1f1c6233dc30a91387bf34f54a"];
     
+    
+    BmobUser *bUser = [BmobUser currentUser];
+    if (bUser) {
+        //进行操作
+        UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+        UITabBarController *tv = [story instantiateViewControllerWithIdentifier:@"tabbar"];
+        self.window.rootViewController = tv;
+
+    }else{
+        //对象为空时，可打开用户注册界面
+    }
+
+    
+
+    
     return YES;
 }
 

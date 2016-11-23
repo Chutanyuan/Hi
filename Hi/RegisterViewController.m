@@ -10,6 +10,7 @@
 #import <BmobSDK/Bmob.h>
 
 #import "loginViewController.h"
+#import "ViewController.h"
 
 @interface RegisterViewController ()
 {
@@ -18,6 +19,7 @@
     UIButton * cancel;
     UIButton * sure;
     NSString * PhoneNumber;
+    NSString * smsCode;
 }
 @property (strong, nonatomic) UIImageView *logo;
 @property (strong, nonatomic) UIImageView *leftLogo;
@@ -34,19 +36,20 @@
 @implementation RegisterViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
+    
     [self logo];
     [self topLine];
     [self leftLogo];
     [self textfiled];
     [self bottomLine];
     [self registeButton];
+    [self loginButton];
     [self sendView];
     [self htmlLabel];
-    [self loginButton];
-    // Do any additional setup after loading the view.
+    
 }
-
 -(UIImageView *)logo
 {
     if (!_logo) {
@@ -181,6 +184,8 @@
 }
 -(void)registeButtonClick
 {
+
+    
     if (_registeButton.tag==0) {
         if ([self judgePhoneNumber:_textfiled.text]==YES) {
             
@@ -208,16 +213,26 @@
             [ShowMessage showMessage:@"手机号码不正确"];
         }
     }else if (_registeButton.tag == 10){
-        NSString * smsCode = self.textfiled.text;
-        [BmobUser signOrLoginInbackgroundWithMobilePhoneNumber:PhoneNumber andSMSCode:smsCode block:^(BmobUser *user, NSError *error) {
+        smsCode = self.textfiled.text;
+        _textfiled.placeholder = @"请设置一个您熟记的密码";
+        _textfiled.text = @"";
+        [_registeButton setTitle:@"登录" forState:UIControlStateNormal];
+        _registeButton.tag = 100;
+
+    }else if (_registeButton.tag == 100){
+        [ShowMessage showMessage:[NSString stringWithFormat:@"%@",_textfiled.text]];
+        [BmobUser signOrLoginInbackgroundWithMobilePhoneNumber:PhoneNumber SMSCode:smsCode andPassword:_textfiled.text block:^(BmobUser *user, NSError *error) {
             if (!error) {
-                NSLog(@"%@",user);
+                NSUserDefaults * userdefaults = [NSUserDefaults standardUserDefaults];
+                [userdefaults setObject:@{PhoneNumber:@"account",_textfiled.text:@"password"} forKey:@"userLoginMessage"];
+                [userdefaults synchronize];
+                [self performSegueWithIdentifier:@"player" sender:nil];
+                
             }else{
                 NSLog(@"%@",error);
             }
-        }];
 
-        [ShowMessage showMessage:@"通过验证自动注册登录"];
+        }];
     }
 }
 
@@ -246,7 +261,6 @@
         } else {
             //获得smsID
             NSLog(@"sms ID：%d",msgId);
-            
         }
     }];
     
@@ -257,6 +271,7 @@
     [UIView animateWithDuration:0.3 animations:^{
         _sendView.frame = CGRectMake(screenwidth, _topLine.frame.origin.y, screenwidth, 50);
         bottom.frame = CGRectMake(0, _sendView.frame.size.height-1, screenwidth, 1);
+        [_registeButton setTitle:@"注册" forState:UIControlStateNormal];
     }];
     
 }
@@ -314,9 +329,7 @@
     return _loginButton;
 }
 - (void)loginClick{
-    loginViewController * login = [[loginViewController alloc]init];
-    
-    [self presentViewController:login animated:YES completion:nil];
-    
+
+    [self performSegueWithIdentifier:@"modellogin" sender:nil];
 }
 @end

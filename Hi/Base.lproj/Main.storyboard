@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1d5-4W-IzN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="N9W-XN-Pyr">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -9,7 +9,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="D75-Tl-z5n">
             <objects>
-                <tabBarController id="1d5-4W-IzN" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabbar" id="1d5-4W-IzN" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="xp6-Cl-XBg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -20,7 +20,6 @@
                         <segue destination="VKM-KM-4EX" kind="relationship" relationship="viewControllers" id="Ajv-JS-Fjn"/>
                         <segue destination="d3A-BV-UxN" kind="relationship" relationship="viewControllers" id="qZS-XQ-xgI"/>
                         <segue destination="yPX-5k-Gyj" kind="relationship" relationship="viewControllers" id="yJQ-pL-A5M"/>
-                        <segue destination="N9W-XN-Pyr" kind="modal" id="1ES-KR-hwZ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dDH-eV-MDN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -40,10 +39,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="3ji-1c-2Bu" kind="modal" identifier="modellogin" id="42M-dY-O8n"/>
+                        <segue destination="1d5-4W-IzN" kind="modal" identifier="player" id="jqB-fG-XRF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OCI-ae-gP2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-735.20000000000005" y="834.33283358320841"/>
+            <point key="canvasLocation" x="-1604" y="44"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="djE-ne-Dn6">
+            <objects>
+                <viewController storyboardIdentifier="loginview" id="3ji-1c-2Bu" customClass="loginViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tTF-JR-Qw7"/>
+                        <viewControllerLayoutGuide type="bottom" id="FF0-4C-lrs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gLz-tN-kfq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="3CF-wB-EV9"/>
+                    <connections>
+                        <segue destination="1d5-4W-IzN" kind="modal" identifier="loginplayer" id="8cJ-dx-2IV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ejb-iw-8Bu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1604" y="890"/>
         </scene>
         <!--我-->
         <scene sceneID="TxF-PE-ddb">
@@ -173,7 +198,7 @@
         <!--嗨-->
         <scene sceneID="Rel-LU-OjJ">
             <objects>
-                <viewController id="vre-mc-mJQ" customClass="ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HI" id="vre-mc-mJQ" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="J91-nK-4l3"/>
                         <viewControllerLayoutGuide type="bottom" id="iXc-hj-Cef"/>
@@ -193,4 +218,7 @@
     <resources>
         <image name="tabbar_mainframe" width="25" height="23"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="jqB-fG-XRF"/>
+    </inferredMetricsTieBreakers>
 </document>
