@@ -136,6 +136,7 @@
 - (void)BmobUser
 {
     BmobUser * user = [BmobUser currentUser];
+    
     if (user == nil) {
         [self performSegueWithIdentifier:@"register" sender:nil];
     }

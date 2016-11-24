@@ -124,7 +124,8 @@ UISearchBarDelegate,UISearchDisplayDelegate,headTableViewAction>
     if (tableView==_searchDisplayController.searchResultsTableView) {
         return _searchResultArr.count;
     }else{
-        return [_rowArr[section] count];
+        NSArray * arraycount = _rowArr[section];
+        return arraycount.count;
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

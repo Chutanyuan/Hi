@@ -7,8 +7,23 @@
 //
 
 #import "PersonalSettingViewController.h"
+#import "settingHeaderCell.h"
+#import "settingRightTitleCell.h"
+#import "MBProgressHUD.h"
+#import "CompressImage.h"
+#import "ViewUtil.h"
+#import "JobView.h"
 
-@interface PersonalSettingViewController ()
+
+
+@interface PersonalSettingViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+{
+    settingHeaderCell * cell;
+}
+@property(nonatomic,strong)BmobUser* user;
+@property(nonatomic,strong)UITableView * tableview;
+@property (strong, nonatomic) NSMutableArray *dataArray;
+@property (strong, nonatomic) JobView *jobView;
 
 @end
 
@@ -16,23 +31,286 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.user = [BmobUser currentUser];
     self.view.backgroundColor = [UIColor whiteColor];
+    _dataArray = [[NSMutableArray alloc] initWithObjects:@(SettingTypeSpace),@(SettingTypeAvatar),@(SettingTypeNick),@(SettingTypeGender),@(SettingTypeSpace),@(SettingTypeFeedback), nil];
     // Do any additional setup after loading the view.
+    [self tableview];
+    
+}
+-(UITableView *)tableview{
+    if (!_tableview) {
+        _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, screenwidth, screenheight) style:UITableViewStyleGrouped];
+        _tableview.delegate = self;
+        _tableview.dataSource = self;
+        [self.view addSubview:_tableview];
+    }
+    return _tableview;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray * titleone = @[@"头像",@"身份",@"区域",@"兴趣爱好",@"喜欢的电影",@"最爱的美食",@"旅游目的地"];
+    NSArray * titletwo = @[@"身高",@"性别",@"名字",@"手机"];
+
+    if (indexPath.row==0) {
+        if (indexPath.section==0) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"header"];
+            if (!cell) {
+                cell = [[settingHeaderCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"header"];
+            }
+            cell.textLabel.text = @"头像";
+            [cell.imageview sd_setImageWithURL:[NSURL URLWithString:[self.user objectForKey:@"headPhoto"]] placeholderImage:nil];
+            return cell;
+        }else{
+            settingRightTitleCell * defaulteCell = [tableView dequeueReusableCellWithIdentifier:@"defaults"];
+            if (!defaulteCell) {
+                defaulteCell = [[settingRightTitleCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"defaults"];
+            }
+            defaulteCell.textLabel.text = @"身高";
+            return defaulteCell;
+        }
+    }else{
+        settingRightTitleCell * deCell = [tableView dequeueReusableCellWithIdentifier:@"deCell"];
+        if (!deCell) {
+            deCell = [[settingRightTitleCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"deCell"];
+        }
+        if (indexPath.section==0) {
+            if (indexPath.row==1) {
+                deCell.label.text = @"慎重选择半年内不可更改";
+                deCell.label.font = [FontOutSystem fontWithFangZhengSize:12.0];
+                deCell.label.textColor = [UIColor redColor];
+            }else{
+                
+            }
+            deCell.textLabel.text = [NSString stringWithFormat:@"%@",titleone[indexPath.row]];
+
+        }else{
+            deCell.textLabel.text = [NSString stringWithFormat:@"%@",titletwo[indexPath.row]];
+            if (indexPath.row==1) {
+                NSNumber * number =[self.user objectForKey:@"sex"];
+                int sexNumber = [number intValue];
+                if (sexNumber==1) {
+                    deCell.label.text = @"男";
+                }else if([[self.user objectForKey:@"sex"] isEqual:@"2"]){
+                    deCell.label.text = @"女";
+                }
+            }else if (indexPath.row==2){
+                if ([[self.user objectForKey:@"nickName"] isEqual:@""]) {
+                    
+                }else{
+                    deCell.label.text = [NSString stringWithFormat:@"%@",[self.user objectForKey:@"nickName"]];
+                }
+            }else if (indexPath.row==3){
+                if ([[self.user objectForKey:@"mobilePhoneNumber"] isEqual:@""]) {
+                    
+                }else{
+                    deCell.label.text = [NSString stringWithFormat:@"%@",[self.user objectForKey:@"mobilePhoneNumber"]];
+                }
+            }
+        }
+        return deCell;
+    }
+}
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (section==0) {
+        return 7;
+    }else{
+        return 4;
+    }
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    UITableViewCell * cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+    return cell.frame.size.height;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 20;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.1;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section==0&&indexPath.row==0) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"选择图片" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"拍照",@"从相册选取", nil];
+        [alert show];
+    }
+    if (indexPath.section==0) {
+        switch (indexPath.row) {
+            case 1:
+            {
+                [self jobView];
+                [UIView animateWithDuration:0.3 animations:^{
+                    self.jobView.frame = CGRectMake(0, 120+64, screenwidth, 305);
+                }];
+            }
+                break;
+            case 2:
+            {
+                
+            }
+                break;
+            case 3:
+            {
+                
+            }
+                break;
+            case 4:
+            {
+                
+            }
+                break;
+            case 5:
+            {
+                
+            }
+                break;
+            case 6:
+            {
+                
+            }
+                break;
+                
+            default:
+                break;
+        }
+
+    }else{
+        switch (indexPath.row) {
+            case 0:
+            {
+                
+            }
+                break;
+            case 2:
+            {
+                [self changeNick];
+            }
+                break;
+            case 3:
+            {
+                
+            }
+                break;
+                
+            default:
+                break;
+        }
+    }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (alertView.tag==10) {
+        
+        if (buttonIndex == [alertView cancelButtonIndex]) {
+            return;
+        }
+        switch (buttonIndex) {
+            case 0:
+                break;
+            case 1:{
+                [self modifyUserWithKey:@"nickName" object:[alertView textFieldAtIndex:0].text];
+            }
+                break;
+            default:
+                break;
+        }
+    }else{
+        UIImagePickerController *ipc = [[UIImagePickerController alloc]init];
+        ipc.delegate = self;
+        [[ipc navigationBar] setTintColor:[CorlorTransform colorWithHexString:@"#3f90a4"]];
+        if (buttonIndex == 1) {
+            //NSLog(@"1");
+            if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+            {
+                [ipc setSourceType:UIImagePickerControllerSourceTypeCamera];
+                ipc.allowsEditing = YES;
+                ipc.showsCameraControls  = YES;
+                [self presentViewController:ipc animated:YES completion:nil];
+                
+            }else{
+                //NSLog(@"硬件不支持");
+            }
+        }
+        if (buttonIndex == 2) {
+            [ipc setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+            ipc.allowsEditing = YES;
+            [self presentViewController:ipc animated:YES completion:nil];
+        }
+        
+    }
 }
 
-/*
-#pragma mark - Navigation
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary*)info{
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+    
+    UIImage *image = info[UIImagePickerControllerEditedImage];
+    cell.imageview.image = image;
+    if (image.size.width != image.size.height) {
+        [ShowMessage showMessage:@"长宽不一致"];
+    }else{
+        UIImage *scaleImage = [ViewUtil imageByScalingToSize:CGSizeMake(200, 200) sourceImage:image];
+        BmobFile *file = [[BmobFile alloc] initWithFileName:@"photo.png" withFileData:UIImagePNGRepresentation(scaleImage)];
+        [file saveInBackgroundByDataSharding:^(BOOL isSuccessful, NSError *error) {
+            if (isSuccessful) {
+                
+                [self modifyUserWithKey:@"headPhoto" object:file.url];
+                
+            }else{
+                
+                NSLog(@"%@",error.localizedDescription);
+            }
+        } progressBlock:^(CGFloat progress) {
+            
+        }];
+        
+    }
+
 }
-*/
+
+-(void)modifyUserWithKey:(NSString *)key object:(id )object{
+    BmobUser * users = [BmobUser objectWithoutDataWithClassName:nil objectId:self.user.objectId];
+    [users setObject:object forKey:key];
+    [users updateInBackgroundWithResultBlock:^(BOOL isSuccessful, NSError *error) {
+        if (isSuccessful) {
+            [self.user setObject:object forKey:key];
+            [self.tableview reloadData];
+        }else{
+            NSLog(@"%@",error);
+        }
+    }];
+    
+}
+
+-(void)changeNick{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
+                                                        message:@"填入昵称"
+                                                       delegate:self
+                                              cancelButtonTitle:@"取消"
+                                              otherButtonTitles:@"确定", nil];
+    alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    alertView.tag = 10;
+    [alertView show];
+}
+-(UIView *)jobView
+{
+    if (!_jobView) {
+        _jobView = [[JobView alloc]initWithFrame:CGRectMake(screenwidth, 0, screenwidth, 305)];
+        _jobView.backgroundColor = [UIColor whiteColor];
+        [self.view addSubview:_jobView];
+    }
+    return _jobView;
+}
 
 @end

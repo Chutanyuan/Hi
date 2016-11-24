@@ -130,7 +130,7 @@
             UserData * userdata = [[UserData alloc]initUserAttribute:data];
             NSString * sex = userdata.sex;
             if ([sex isEqualToString:@"0"]) {
-
+                
                 [self chooseSex];
                 [UIView animateWithDuration:0.3 animations:^{
                     _chooseSex.frame = CGRectMake(0, screenheight/2-100, screenwidth, 200);
@@ -176,7 +176,6 @@
 
 -(void)sexChooseSure:(UIButton *)sender
 {
-    NSLog(@"确定");
     NSUserDefaults * userdefaults = [NSUserDefaults standardUserDefaults];
     NSNumber * sex = [userdefaults objectForKey:@"sex"];
     [userdefaults synchronize];
