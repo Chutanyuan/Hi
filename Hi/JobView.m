@@ -8,6 +8,15 @@
 
 #import "JobView.h"
 
+@interface JobView ()
+{
+    NSString * jiluText;
+    NSTimer * timer;
+    UILabel * titlelabel;
+    int i;
+}
+@end
+
 @implementation JobView
 
 -(instancetype)initWithFrame:(CGRect)frame
@@ -31,6 +40,11 @@
             label.layer.borderColor = [CorlorTransform colorWithHexString:@"#BABABA"].CGColor;
             label.layer.borderWidth = 1;
             label.clipsToBounds = YES;
+            label.tag = idx;
+            UITapGestureRecognizer * gesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(LabelTouch:)];
+            label.userInteractionEnabled = YES;
+            [label addGestureRecognizer:gesture];
+            
             [self addSubview:label];
             
         }];
@@ -71,5 +85,16 @@
     [UIView animateWithDuration:0.3 animations:^{
        self.frame =CGRectMake(screenwidth, 0, screenwidth, 0);
     }];
+    if (sender.tag==2) {
+        NSLog(@"%@",titlelabel.text);
+        titlelabel.layer.borderColor = [CorlorTransform colorWithHexString:@"#BABABA"].CGColor;
+        [self.delegate jobLabelText:titlelabel.text];
+    }
 }
+- (void)LabelTouch:(UITapGestureRecognizer *)gesture
+{
+    titlelabel = (UILabel *)[gesture view];
+    titlelabel.layer.borderColor = [CorlorTransform colorWithHexString:@"#48FA8D"].CGColor;
+}
+
 @end

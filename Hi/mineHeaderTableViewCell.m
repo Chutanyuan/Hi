@@ -26,15 +26,16 @@
         NSDictionary * data = [user requestDataDictionary];
         UserData * userdata = [[UserData alloc]initUserAttribute:data];
         _headImage = [[UIImageView alloc]initWithFrame:CGRectMake(10, 10, 100, 100)];
-        _headImage.image = [UIImage imageNamed:@"10"];
+        [_headImage sd_setImageWithURL:[NSURL URLWithString:[user objectForKey:@"headPhoto"]] placeholderImage:nil];
         [self addSubview:_headImage];
         
         _nickname = [[UILabel alloc]init];
         _nickname.font = [FontOutSystem fontWithFangZhengSize:15.0];
-        if (userdata.nickname == nil) {
+        if ([[user objectForKey:@"nickName"] isEqualToString:@""]) {
             _nickname.text = [NSString stringWithFormat:@"未设置"];
+
         }else{
-            _nickname.text = [NSString stringWithFormat:@"%@",userdata.nickname];
+            _nickname.text = [NSString stringWithFormat:@"%@",[user objectForKey:@"nickName"]];
         }
         CGSize size_nickname = [_nickname.text sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:_nickname.font,NSFontAttributeName, nil]];
         _nickname.frame = CGRectMake(_headImage.frame.origin.x+_headImage.frame.size.width+10, _headImage.frame.origin.y+10, size_nickname.width, size_nickname.height);

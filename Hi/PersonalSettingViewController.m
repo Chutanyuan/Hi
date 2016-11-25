@@ -16,7 +16,7 @@
 
 
 
-@interface PersonalSettingViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface PersonalSettingViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,JobViewDelegate>
 {
     settingHeaderCell * cell;
 }
@@ -76,9 +76,20 @@
         }
         if (indexPath.section==0) {
             if (indexPath.row==1) {
-                deCell.label.text = @"慎重选择半年内不可更改";
-                deCell.label.font = [FontOutSystem fontWithFangZhengSize:12.0];
-                deCell.label.textColor = [UIColor redColor];
+                NSString * userIdentity = [NSString stringWithFormat:@"%@",[self.user objectForKey:@"userIdentity"]];
+                if ([userIdentity isEqualToString:@""]) {
+                    
+                    deCell.label.text = @"慎重选择半年内不可更改";
+                    deCell.label.font = [FontOutSystem fontWithFangZhengSize:12.0];
+                    deCell.label.textColor = [UIColor redColor];
+
+                }else{
+                    
+                    deCell.label.text = userIdentity;
+                    deCell.label.font = [FontOutSystem fontWithFangZhengSize:15];
+                    deCell.label.textColor = [UIColor redColor];
+
+                }
             }else{
                 
             }
@@ -308,9 +319,14 @@
     if (!_jobView) {
         _jobView = [[JobView alloc]initWithFrame:CGRectMake(screenwidth, 0, screenwidth, 305)];
         _jobView.backgroundColor = [UIColor whiteColor];
+        _jobView.delegate = self;
         [self.view addSubview:_jobView];
     }
     return _jobView;
 }
-
+-(void)jobLabelText:(NSString *)text
+{
+    [self modifyUserWithKey:@"userIdentity" object:text];
+    [_tableview reloadData];
+}
 @end

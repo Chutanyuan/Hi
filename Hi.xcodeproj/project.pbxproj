@@ -10,6 +10,10 @@
 		2B0972281DDD81360047C655 /* newEventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B0972271DDD81360047C655 /* newEventsTableViewCell.m */; };
 		2B2111F71DDEE2D400DA2825 /* mineHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B2111F61DDEE2D400DA2825 /* mineHeaderTableViewCell.m */; };
 		2B2111FB1DDEF0E500DA2825 /* settingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B2111FA1DDEF0E500DA2825 /* settingViewController.m */; };
+		2B4538811DE80CBD00E1226A /* minePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B4538801DE80CBD00E1226A /* minePhotoViewController.m */; };
+		2B4538841DE80E1000E1226A /* collectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B4538831DE80E1000E1226A /* collectViewController.m */; };
+		2B4538881DE810D600E1226A /* minePhotoHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B4538871DE810D600E1226A /* minePhotoHeadView.m */; };
+		2B45388B1DE8257400E1226A /* mineContentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B45388A1DE8257400E1226A /* mineContentTableViewCell.m */; };
 		2B5FB3C71DDC379700C80152 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5FB3C61DDC379700C80152 /* main.m */; };
 		2B5FB3CA1DDC379700C80152 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5FB3C91DDC379700C80152 /* AppDelegate.m */; };
 		2B5FB3CD1DDC379700C80152 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5FB3CC1DDC379700C80152 /* ViewController.m */; };
@@ -141,6 +145,14 @@
 		2B2111F61DDEE2D400DA2825 /* mineHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mineHeaderTableViewCell.m; sourceTree = "<group>"; };
 		2B2111F91DDEF0E500DA2825 /* settingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settingViewController.h; sourceTree = "<group>"; };
 		2B2111FA1DDEF0E500DA2825 /* settingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = settingViewController.m; sourceTree = "<group>"; };
+		2B45387F1DE80CBD00E1226A /* minePhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = minePhotoViewController.h; sourceTree = "<group>"; };
+		2B4538801DE80CBD00E1226A /* minePhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = minePhotoViewController.m; sourceTree = "<group>"; };
+		2B4538821DE80E1000E1226A /* collectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = collectViewController.h; sourceTree = "<group>"; };
+		2B4538831DE80E1000E1226A /* collectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = collectViewController.m; sourceTree = "<group>"; };
+		2B4538861DE810D600E1226A /* minePhotoHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = minePhotoHeadView.h; sourceTree = "<group>"; };
+		2B4538871DE810D600E1226A /* minePhotoHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = minePhotoHeadView.m; sourceTree = "<group>"; };
+		2B4538891DE8257400E1226A /* mineContentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mineContentTableViewCell.h; sourceTree = "<group>"; };
+		2B45388A1DE8257400E1226A /* mineContentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mineContentTableViewCell.m; sourceTree = "<group>"; };
 		2B5FB3C21DDC379700C80152 /* Hi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B5FB3C61DDC379700C80152 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2B5FB3C81DDC379700C80152 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -384,13 +396,41 @@
 				2B2111FA1DDEF0E500DA2825 /* settingViewController.m */,
 				2B7EDFA21DE2A7F3008CB078 /* 帐号与安全 */,
 				2B7EDFA11DE2A7EA008CB078 /* 新消息通知 */,
-				2B7EDFA01DE2A7E2008CB078 /* 隐私 */,
 				2B7EDF9F1DE2A7CF008CB078 /* 通用 */,
 				2B7EDF9E1DE2A7C2008CB078 /* 帮助与反馈 */,
 				2B7EDF9C1DE2A7A9008CB078 /* 关于嗨 */,
-				2BC9E25D1DE5910000F7DAAD /* 个人信息设置 */,
 			);
 			name = "设置";
+			sourceTree = "<group>";
+		};
+		2B45387D1DE80C8A00E1226A /* 相册 */ = {
+			isa = PBXGroup;
+			children = (
+				2B45387F1DE80CBD00E1226A /* minePhotoViewController.h */,
+				2B4538801DE80CBD00E1226A /* minePhotoViewController.m */,
+				2B4538851DE810B700E1226A /* headerView */,
+			);
+			name = "相册";
+			sourceTree = "<group>";
+		};
+		2B45387E1DE80C9E00E1226A /* 收藏 */ = {
+			isa = PBXGroup;
+			children = (
+				2B4538821DE80E1000E1226A /* collectViewController.h */,
+				2B4538831DE80E1000E1226A /* collectViewController.m */,
+			);
+			name = "收藏";
+			sourceTree = "<group>";
+		};
+		2B4538851DE810B700E1226A /* headerView */ = {
+			isa = PBXGroup;
+			children = (
+				2B4538891DE8257400E1226A /* mineContentTableViewCell.h */,
+				2B45388A1DE8257400E1226A /* mineContentTableViewCell.m */,
+				2B4538861DE810D600E1226A /* minePhotoHeadView.h */,
+				2B4538871DE810D600E1226A /* minePhotoHeadView.m */,
+			);
+			name = headerView;
 			sourceTree = "<group>";
 		};
 		2B5FB3B91DDC379700C80152 = {
@@ -501,6 +541,10 @@
 				2B5FB40C1DDC40BF00C80152 /* mineViewController.h */,
 				2B5FB40D1DDC40BF00C80152 /* mineViewController.m */,
 				2B2111F41DDEE2C300DA2825 /* view */,
+				2B45387D1DE80C8A00E1226A /* 相册 */,
+				2B45387E1DE80C9E00E1226A /* 收藏 */,
+				2B7EDFA01DE2A7E2008CB078 /* 隐私 */,
+				2BC9E25D1DE5910000F7DAAD /* 个人信息设置 */,
 				2B2111F81DDEF0CC00DA2825 /* 设置 */,
 			);
 			name = "我";
@@ -1103,6 +1147,7 @@
 				2B5FB3CD1DDC379700C80152 /* ViewController.m in Sources */,
 				2BB416881DE6E7D5006E6DF4 /* SDWebImageDownloaderOperation.m in Sources */,
 				2BB4168D1DE6E7D5006E6DF4 /* UIImage+MultiFormat.m in Sources */,
+				2B4538881DE810D600E1226A /* minePhotoHeadView.m in Sources */,
 				2BB4163F1DE6C094006E6DF4 /* settingRightTitleCell.m in Sources */,
 				2B5FB4081DDC406C00C80152 /* friendViewController.m in Sources */,
 				2BC9E2591DE58D1500F7DAAD /* UserData.m in Sources */,
@@ -1128,12 +1173,14 @@
 				2B7EDFB11DE2AB49008CB078 /* HelpViewController.m in Sources */,
 				2BC9E25C1DE590F600F7DAAD /* PersonalSettingViewController.m in Sources */,
 				2B0972281DDD81360047C655 /* newEventsTableViewCell.m in Sources */,
+				2B45388B1DE8257400E1226A /* mineContentTableViewCell.m in Sources */,
 				2BB416901DE6E7D5006E6DF4 /* UIView+WebCacheOperation.m in Sources */,
 				2B5FB3C71DDC379700C80152 /* main.m in Sources */,
 				2B7EDFAB1DE2AB14008CB078 /* PrivacyViewController.m in Sources */,
 				2BB4168F1DE6E7D5006E6DF4 /* UIImageView+WebCache.m in Sources */,
 				2B5FB45D1DDC5B2400C80152 /* JSONModel.m in Sources */,
 				2BB4168B1DE6E7D5006E6DF4 /* UIButton+WebCache.m in Sources */,
+				2B4538841DE80E1000E1226A /* collectViewController.m in Sources */,
 				2B5FB4601DDC5B2400C80152 /* JSONModelError.m in Sources */,
 				2B8CE0D61DE3EABB007CD9D7 /* ShowMessage.m in Sources */,
 				2BB416481DE6D4EF006E6DF4 /* MBProgressHUD+Add.m in Sources */,
@@ -1150,6 +1197,7 @@
 				2B7EDFA81DE2AADF008CB078 /* messageNoticViewController.m in Sources */,
 				2B5FB41D1DDC532E00C80152 /* chatViewController.m in Sources */,
 				2BB416891DE6E7D5006E6DF4 /* SDWebImageManager.m in Sources */,
+				2B4538811DE80CBD00E1226A /* minePhotoViewController.m in Sources */,
 				2B5FB40E1DDC40BF00C80152 /* mineViewController.m in Sources */,
 				2B5FB4271DDC5AF500C80152 /* NSString+Utils.m in Sources */,
 				2BB4168A1DE6E7D5006E6DF4 /* SDWebImagePrefetcher.m in Sources */,

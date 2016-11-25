@@ -55,8 +55,6 @@
     }else if (indexPath.section==1){
         if (indexPath.row==0) {
             cell.textLabel.text = @"新消息通知";
-        }else if (indexPath.row==1){
-            cell.textLabel.text = @"隐私";
         }else{
             cell.textLabel.text = @"通用";
         }
@@ -80,7 +78,7 @@
     if (section==0) {
         return 1;
     }else if (section==1){
-        return 3;
+        return 2;
     }else if (section==2){
         return 2;
     }else{
@@ -109,11 +107,6 @@
             messageNoticViewController * message = [[messageNoticViewController alloc]init];
             message.title = @"新消息通知";
             [self.navigationController pushViewController:message animated:YES];
-        }else if (indexPath.row==1){
-            //隐私
-            PrivacyViewController * pricacy = [[PrivacyViewController alloc]init];
-            pricacy.title = @"隐私";
-            [self.navigationController pushViewController:pricacy animated:YES];
         }else{
             //通用
             CurrentViewController * current = [[CurrentViewController alloc]init];

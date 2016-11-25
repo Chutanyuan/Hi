@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol JobViewDelegate <NSObject>
+
+-(void)jobLabelText:(NSString *)text;
+
+@end
+
 @interface JobView : UIView
+
+@property(nonatomic,weak)id<JobViewDelegate>delegate;
 
 @end

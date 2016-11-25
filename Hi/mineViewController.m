@@ -11,6 +11,10 @@
 #import "settingViewController.h"
 #import "chooseSexView.h"
 #import "PersonalSettingViewController.h"
+#import "PrivacyViewController.h"
+#import "minePhotoViewController.h"
+#import "collectViewController.h"
+
 #import <BmobSDK/Bmob.h>
 
 @interface mineViewController ()<UITableViewDelegate,UITableViewDataSource,chooseSexDelegate>
@@ -32,9 +36,9 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
 
     [self user];
-
-    // Do any additional setup after loading the view.
+    
     [self tableview];
+    
 }
 -(BmobUser *)user
 {
@@ -45,7 +49,7 @@
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
 }
 
 -(UITableView *)tableview
@@ -85,7 +89,7 @@
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
             [cell.contentView addSubview:line];
         }
-        if (indexPath.section==1) {
+        if (indexPath.section==2) {
             if (indexPath.row==0) {
                 cell.imageView.image = [UIImage imageNamed:@"common_list_mingpian"];
                 cell.textLabel.text = @"相册";
@@ -94,10 +98,16 @@
                 cell.textLabel.text = @"收藏";
             }
         }
-        if (indexPath.section==2) {
+        if (indexPath.section==3) {
             if (indexPath.row == 0) {
                 cell.imageView.image = [UIImage imageNamed:@"bg_setting"];
                 cell.textLabel.text = @"设置";
+            }
+        }
+        if (indexPath.section==1) {
+            if (indexPath.row==0) {
+                cell.imageView.image = [UIImage imageNamed:@"common_list_mingpian"];
+                cell.textLabel.text = @"隐私";
             }
         }
         return cell;
@@ -105,11 +115,11 @@
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 4;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section==1) {
+    if (section==2) {
         return 2;
     }else{
         return 1;
@@ -147,10 +157,28 @@
             break;
         case 1:
         {
-            
+            PrivacyViewController * pricacy = [[PrivacyViewController alloc]init];
+            pricacy.hidesBottomBarWhenPushed = YES;
+            pricacy.title = @"隐私";
+            [self.navigationController pushViewController:pricacy animated:YES];
         }
             break;
         case 2:
+        {
+            if (indexPath.row==0) {
+                minePhotoViewController * photo = [[minePhotoViewController alloc]init];
+                photo.hidesBottomBarWhenPushed = YES;
+                photo.title = @"相册";
+                [self.navigationController pushViewController:photo animated:YES];
+            }else{
+                collectViewController * collect = [[collectViewController alloc]init];
+                collect.hidesBottomBarWhenPushed = YES;
+                collect.title = @"收藏";
+                [self.navigationController pushViewController:collect animated:YES];
+            }
+        }
+            break;
+        case 3:
         {
             settingViewController * setting = [[settingViewController alloc]init];
             setting.hidesBottomBarWhenPushed = YES;
