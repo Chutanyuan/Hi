@@ -34,6 +34,15 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     
+    UIButton * exitButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [exitButton setTitle:@"返回注册" forState:UIControlStateNormal];
+    [exitButton addTarget:self action:@selector(exitButton) forControlEvents:UIControlEventTouchUpInside];
+    [exitButton setTitleColor:[CorlorTransform colorWithHexString:@"#0071FF"] forState:UIControlStateNormal];
+    CGSize size = [exitButton.titleLabel.text sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:exitButton.titleLabel.font,NSFontAttributeName, nil]];
+    exitButton.frame = CGRectMake(10, 30, size.width, size.height);
+    [self.view addSubview:exitButton];
+
+    
     [self logoImage];
     
     topline = [[UIView alloc]initWithFrame:CGRectMake(0, _logoImage.frame.origin.y+_logoImage.frame.size.height+50, screenwidth, 1)];
@@ -55,17 +64,12 @@
     [self loginButton];
 
 
-    UIButton * exitButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    exitButton.frame = CGRectMake(20, 20, 80, 40);
-    [exitButton setTitle:@"返回注册" forState:UIControlStateNormal];
-    [exitButton addTarget:self action:@selector(exitButton) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:exitButton];
     
     
 }
 -(void)exitButton
 {
-    [self.navigationController popViewControllerAnimated:NO];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 -(UIImageView *)logoImage
 {
@@ -153,19 +157,30 @@
 }
 - (void)loginButtonCLick
 {
-    [BmobUser loginWithUsernameInBackground:_phoneNumber.text password:_password.text block:^(BmobUser *user, NSError *error) {
-        if (!error) {
-            //登录到嗨界面
-            NSUserDefaults * userdefaults = [NSUserDefaults standardUserDefaults];
-            [userdefaults setObject:@{_phoneNumber.text:@"account",_password.text:@"password"} forKey:@"userLoginMessage"];
-            [userdefaults synchronize];
-            
-            [self performSegueWithIdentifier:@"loginplayer" sender:nil];
-        }else{
-            [ShowMessage showMessage:@"登录失败"];
+    
+    [[EMClient sharedClient] loginWithUsername:_phoneNumber.text password:@"111111" completion:^(NSString *aUsername, EMError *aError) {
+        if (!aError) {
+            [[EMClient sharedClient].options setIsAutoLogin:YES];
+            [ShowMessage showMessage:@"换新登录成功"];
+            [BmobUser loginWithUsernameInBackground:_phoneNumber.text password:_password.text block:^(BmobUser *user, NSError *error) {
+                if (!error) {
+                    //登录到嗨界面
+                    NSUserDefaults * userdefaults = [NSUserDefaults standardUserDefaults];
+                    [userdefaults setObject:@{_phoneNumber.text:@"account",_password.text:@"password"} forKey:@"userLoginMessage"];
+                    [userdefaults synchronize];
+                    
+                    [self performSegueWithIdentifier:@"loginplayer" sender:nil];
+                }else{
+                    [ShowMessage showMessage:@"登录失败"];
+                }
+            }];
+
+        } else {
+            NSLog(@"登陆失败");
         }
     }];
-}
+    
+    }
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     [self.view endEditing:YES];

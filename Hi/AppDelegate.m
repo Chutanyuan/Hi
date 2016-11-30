@@ -19,22 +19,24 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
+    /** Bmob */
     [Bmob registerWithAppKey:@"08451d1f1c6233dc30a91387bf34f54a"];
-    
-    
     BmobUser *bUser = [BmobUser currentUser];
     if (bUser) {
         //进行操作
         UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
         UITabBarController *tv = [story instantiateViewControllerWithIdentifier:@"tabbar"];
         self.window.rootViewController = tv;
-
     }else{
         //对象为空时，可打开用户注册界面
     }
 
-    
+    /** 环信 */
+    EMOptions *options = [EMOptions optionsWithAppkey:@"1128161122178264#hi"];
+    /** 推送证书 */
+    options.apnsCertName = @"";
+    [[EMClient sharedClient] initializeSDKWithOptions:options];
+
 
     
     return YES;
@@ -45,15 +47,14 @@
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
 }
 
-
+// APP进入后台
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [[EMClient sharedClient] applicationDidEnterBackground:application];
 }
 
-
+// APP将要从后台返回
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    [[EMClient sharedClient] applicationWillEnterForeground:application];
 }
 
 

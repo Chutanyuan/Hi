@@ -10,10 +10,6 @@
 
 @interface HiTableViewCell ()
 
-@property(nonatomic,strong)UIImageView * headerImage;
-@property(nonatomic,strong)UILabel * nickname;
-@property(nonatomic,strong)UILabel * lastDialogue;
-
 @end
 
 @implementation HiTableViewCell
@@ -25,7 +21,6 @@
         _headerImage.layer.cornerRadius = 5;
         _headerImage.clipsToBounds = YES;
         _headerImage.contentMode = UIViewContentModeScaleAspectFill;
-        _headerImage.backgroundColor = [UIColor redColor];
         [self addSubview:_headerImage];
         
         _nickname = [[UILabel alloc]init];

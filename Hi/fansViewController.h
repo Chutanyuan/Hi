@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UICollectionViewWaterfallLayout.h"
+#import "ZDCollectionViewCell.h"
 
 @interface fansViewController : UIViewController
 

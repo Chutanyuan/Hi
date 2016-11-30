@@ -216,23 +216,40 @@
         smsCode = self.textfiled.text;
         _textfiled.placeholder = @"请设置一个您熟记的密码";
         _textfiled.text = @"";
-        [_registeButton setTitle:@"登录" forState:UIControlStateNormal];
+        [_registeButton setTitle:@"注册" forState:UIControlStateNormal];
         _registeButton.tag = 100;
 
     }else if (_registeButton.tag == 100){
-        [ShowMessage showMessage:[NSString stringWithFormat:@"%@",_textfiled.text]];
-        [BmobUser signOrLoginInbackgroundWithMobilePhoneNumber:PhoneNumber SMSCode:smsCode andPassword:_textfiled.text block:^(BmobUser *user, NSError *error) {
-            if (!error) {
-                NSUserDefaults * userdefaults = [NSUserDefaults standardUserDefaults];
-                [userdefaults setObject:@{PhoneNumber:@"account",_textfiled.text:@"password"} forKey:@"userLoginMessage"];
-                [userdefaults synchronize];
-                [self performSegueWithIdentifier:@"player" sender:nil];
-                
-            }else{
-                NSLog(@"%@",error);
-            }
+        
+        EMError *error = [[EMClient sharedClient] registerWithUsername:PhoneNumber password:@"111111"];
+        NSLog(@"%@",error);
+        if (error==nil) {
+            [ShowMessage showMessage:@"注册成功请登录"];
+            [_registeButton setTitle:@"注册成功请登录" forState:UIControlStateNormal];
 
-        }];
+            [BmobUser signOrLoginInbackgroundWithMobilePhoneNumber:PhoneNumber SMSCode:smsCode andPassword:_textfiled.text block:^(BmobUser *user, NSError *error) {
+                if (!error) {
+                    NSUserDefaults * userdefaults = [NSUserDefaults standardUserDefaults];
+                    [userdefaults setObject:@{PhoneNumber:@"account",_textfiled.text:@"password"} forKey:@"userLoginMessage"];
+                    [userdefaults synchronize];
+                    [self performSegueWithIdentifier:@"player" sender:nil];
+                    
+                }else{
+                    NSLog(@"%@",error);
+                }
+                
+            }];
+
+            
+        }else{
+            NSLog(@"%u",error.code);
+            if (error.code==203) {
+                [ShowMessage showMessage:@"用户已存在"];
+            }
+        }
+
+        
+        
     }
 }
 

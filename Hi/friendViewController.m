@@ -263,7 +263,7 @@ UISearchBarDelegate,UISearchDisplayDelegate,headTableViewAction>
         {
             followManViewController * man = [[followManViewController alloc]init];
             man.hidesBottomBarWhenPushed = YES;
-            man.title = @"我关注的";
+            man.title = @"关注男生";
             [self.navigationController pushViewController:man animated:YES];
         }
             break;
@@ -271,7 +271,7 @@ UISearchBarDelegate,UISearchDisplayDelegate,headTableViewAction>
         {
             followWomanViewController * women = [[followWomanViewController alloc]init];
             women.hidesBottomBarWhenPushed = YES;
-            women.title = @"我关注的";
+            women.title = @"关注女生";
             [self.navigationController pushViewController:women animated:YES];
         }
             break;

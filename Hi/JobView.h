@@ -15,7 +15,7 @@
 @end
 
 @interface JobView : UIView
-
+@property(nonatomic,strong)NSArray * jobArray;
 @property(nonatomic,weak)id<JobViewDelegate>delegate;
 
 @end

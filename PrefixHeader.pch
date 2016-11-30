@@ -24,8 +24,11 @@
 
 #import "UserData.h"
 
+#import "Nsstring_Dic.h"
 
 #import <BmobSDK/Bmob.h>
+
+#import "EMSDK.h"
 
 #import "UIImageView+WebCache.h"
 // Include any system framework and library headers here that should be included in all compilation units.

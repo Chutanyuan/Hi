@@ -12,7 +12,8 @@
 #import "RegisterViewController.h"
 
 
-@interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
+
+@interface ViewController ()<UITableViewDelegate,UITableViewDataSource,EMClientDelegate>
 
 @property(nonatomic,strong)UITableView * tableview;
 
@@ -24,6 +25,12 @@
     self.navigationController.navigationBarHidden = NO;
 
     [self setTabbar];
+    
+    [[EMClient sharedClient] addDelegate:self delegateQueue:nil];
+}
+-(void)autoLoginDidCompleteWithError:(EMError *)aError
+{
+    NSLog(@"sssssssss,%@",aError);
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -61,7 +68,9 @@
     if (!cell) {
         cell = [[HiTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
+    cell.headerImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%ld",(long)indexPath.row+1]];
     return cell;
+    
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -72,10 +81,8 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    chatViewController * chatview = [[chatViewController alloc]init];
-    chatview.title = @"尹青云";
-    chatview.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:chatview animated:YES];
+    chatViewController *chatController = [[chatViewController alloc] init];
+    [self.navigationController pushViewController:chatController animated:YES];
 }
 
 /**设置tabbar*/

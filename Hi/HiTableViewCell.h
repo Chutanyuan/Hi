@@ -10,4 +10,10 @@
 
 @interface HiTableViewCell : UITableViewCell
 
+
+@property(nonatomic,strong)UIImageView * headerImage;
+@property(nonatomic,strong)UILabel * nickname;
+@property(nonatomic,strong)UILabel * lastDialogue;
+
+
 @end

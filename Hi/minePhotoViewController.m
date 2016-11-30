@@ -9,12 +9,17 @@
 #import "minePhotoViewController.h"
 #import "minePhotoHeadView.h"
 #import "mineContentTableViewCell.h"
+#import "ViewUtil.h"
 
-@interface minePhotoViewController ()<UITableViewDelegate,UITableViewDataSource,minePhotoHeadViewDelegate>
-
+@interface minePhotoViewController ()<UITableViewDelegate,UITableViewDataSource,minePhotoHeadViewDelegate,UIAlertViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+{
+    int i;
+}
 @property(nonatomic,strong)UITableView * tableview;
 @property(nonatomic,strong)minePhotoHeadView * headView;
 @property(nonatomic,strong)UIImageView * headImage;
+@property(nonatomic,strong)UIView * bottomBackGroundView;
+@property(nonatomic,strong)BmobUser * user;
 
 @end
 
@@ -22,6 +27,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    i=0;
+    
     self.view.backgroundColor = [UIColor whiteColor];
     // Do any additional setup after loading the view.
     [self tableview];
@@ -85,46 +92,139 @@
 -(void)headViewTapGesture:(UITapGestureRecognizer *)gesture
 {
     self.headImage = (UIImageView *)[gesture view];
-    self.headImage.image = [UIImage imageNamed:@"12"];
-    static int i = 0;
     i++;
-    if (i==1) {
-        [UIView animateWithDuration:0.3 animations:^{
-            [self bottomBackGroundView];
-        }];
-    }else{
+    [self bottomBackGroundView];
+    if (i%2==1) {
         
+        [UIView animateWithDuration:0.3 animations:^{
+            _bottomBackGroundView.frame = CGRectMake(0, screenheight-85, screenwidth, 85);
+        }];
+        
+    }else{
+
+        [UIView animateWithDuration:0.3 animations:^{
+            _bottomBackGroundView.frame = CGRectMake(0, screenheight, screenwidth, 85);
+        }];
     }
     
 }
 - (UIView *)bottomBackGroundView
 {
-    UIView * view;
-    if (!view) {
-        view = [[UIView alloc]initWithFrame:CGRectMake(0, screenheight-85, screenwidth, 85)];
-        view.backgroundColor = [UIColor whiteColor];
-        [self.view addSubview:view];
+    if (!_bottomBackGroundView) {
+        _bottomBackGroundView = [[UIView alloc]initWithFrame:CGRectMake(0, screenheight, screenwidth, 85)];
+        _bottomBackGroundView.backgroundColor = [UIColor whiteColor];
+        [self.view addSubview:_bottomBackGroundView];
         
         UIView * lineview = [[UIView alloc]initWithFrame:CGRectMake(0, 44, screenwidth, 1)];
         lineview.backgroundColor = [CorlorTransform colorWithHexString:@"#BBBBBB"];
-        [view addSubview:lineview];
+        [_bottomBackGroundView addSubview:lineview];
         
         UIButton * changePhoto = [UIButton buttonWithType:UIButtonTypeCustom];
         [changePhoto setTitle:@"更改展示面图片" forState:UIControlStateNormal];
         [changePhoto setTitleColor:[CorlorTransform colorWithHexString:@"#3C3C3C"] forState:UIControlStateNormal];
         changePhoto.titleLabel.font = [FontOutSystem fontWithFangZhengZhenSize:17.0];
         changePhoto.frame = CGRectMake(0, 0, screenwidth, 44);
-        
-        [view addSubview:changePhoto];
+        [changePhoto addTarget:self action:@selector(changePhotoAction:) forControlEvents:UIControlEventTouchUpInside];
+        [_bottomBackGroundView addSubview:changePhoto];
         
         UIButton * cancel = [UIButton buttonWithType:UIButtonTypeCustom];
         [cancel setTitleColor:changePhoto.titleLabel.textColor forState:UIControlStateNormal];
         [cancel setTitle:@"取消" forState:UIControlStateNormal];
         cancel.frame = CGRectMake(0, 45, screenwidth, 44);
         cancel.titleLabel.font = [FontOutSystem fontWithFangZhengZhenSize:17.0];
-        [view addSubview:cancel];
+        [_bottomBackGroundView addSubview:cancel];
+        [cancel addTarget:self  action:@selector(changePhotoCancelAction:) forControlEvents:UIControlEventTouchUpInside];
     }
-    return view;
+    return _bottomBackGroundView;
+}
+- (void)changePhotoAction:(UIButton *)sender
+{
+    [self bottomBackGroundView];
+    [UIView animateWithDuration:0.3 animations:^{
+        _bottomBackGroundView.frame = CGRectMake(0, screenheight, screenwidth, 85);
+    }];
+    i--;
+    
+    UIAlertView * alertview = [[UIAlertView alloc]initWithTitle:@"更改图片" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"拍照",@"照片库", nil];
+    [alertview show];
+}
+
+- (void)changePhotoCancelAction:(UIButton *)sender
+{
+    [self bottomBackGroundView];
+    [UIView animateWithDuration:0.3 animations:^{
+        _bottomBackGroundView.frame = CGRectMake(0, screenheight, screenwidth, 85);
+    }];
+    i--;
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex==1) {
+        NSLog(@"拍照");
+    }else if (buttonIndex == 2){
+        NSLog(@"媒体库");
+    }
+    
+    UIImagePickerController *ipc = [[UIImagePickerController alloc]init];
+    ipc.delegate = self;
+    [[ipc navigationBar] setTintColor:[CorlorTransform colorWithHexString:@"#3f90a4"]];
+    if (buttonIndex == 1) {
+        //NSLog(@"1");
+        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+        {
+            [ipc setSourceType:UIImagePickerControllerSourceTypeCamera];
+            ipc.showsCameraControls  = YES;
+            [self presentViewController:ipc animated:YES completion:nil];
+            
+        }else{
+            //NSLog(@"硬件不支持");
+        }
+    }
+    if (buttonIndex == 2) {
+        [ipc setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+        [self presentViewController:ipc animated:YES completion:nil];
+    }
+
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary*)info{
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    self.headImage.image = image;
+    
+    UIImage *scaleImage = [ViewUtil imageByScalingToSize:CGSizeMake(200, 200) sourceImage:image];
+    BmobFile *file = [[BmobFile alloc] initWithFileName:@"photo.png" withFileData:UIImagePNGRepresentation(scaleImage)];
+    [file saveInBackgroundByDataSharding:^(BOOL isSuccessful, NSError *error) {
+        if (isSuccessful) {
+            
+            [self modifyUserWithKey:@"headPhoto" object:file.url];
+            
+        }else{
+            
+            NSLog(@"%@",error.localizedDescription);
+        }
+    } progressBlock:^(CGFloat progress) {
+        
+    }];
+
+    
+}
+
+-(void)modifyUserWithKey:(NSString *)key object:(id )object{
+    BmobUser * users = [BmobUser objectWithoutDataWithClassName:nil objectId:self.user.objectId];
+    [users setObject:object forKey:key];
+    [users updateInBackgroundWithResultBlock:^(BOOL isSuccessful, NSError *error) {
+        if (isSuccessful) {
+            [self.user setObject:object forKey:key];
+            [self.tableview reloadData];
+        }else{
+            NSLog(@"%@",error);
+        }
+    }];
+    
 }
 
 @end

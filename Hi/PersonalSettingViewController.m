@@ -13,10 +13,10 @@
 #import "CompressImage.h"
 #import "ViewUtil.h"
 #import "JobView.h"
+#import "adressView.h"
 
 
-
-@interface PersonalSettingViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,JobViewDelegate>
+@interface PersonalSettingViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,JobViewDelegate,adressViewDelegate>
 {
     settingHeaderCell * cell;
 }
@@ -24,6 +24,8 @@
 @property(nonatomic,strong)UITableView * tableview;
 @property (strong, nonatomic) NSMutableArray *dataArray;
 @property (strong, nonatomic) JobView *jobView;
+@property (strong, nonatomic) adressView *adressview;
+
 
 @end
 
@@ -90,6 +92,15 @@
                     deCell.label.textColor = [UIColor redColor];
 
                 }
+            }else if (indexPath.row==2){
+                NSString * city = [NSString stringWithFormat:@"%@",[self.user objectForKey:@"city"]];
+                if ([city isEqualToString:@""]) {
+                    
+                }else{
+                    deCell.label.text = city;
+                    deCell.label.font = [FontOutSystem fontWithFangZhengSize:15];
+                }
+
             }else{
                 
             }
@@ -137,8 +148,8 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    UITableViewCell * cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
-    return cell.frame.size.height;
+    UITableViewCell * cellHeight = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+    return cellHeight.frame.size.height;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -161,13 +172,18 @@
             {
                 [self jobView];
                 [UIView animateWithDuration:0.3 animations:^{
+                    
                     self.jobView.frame = CGRectMake(0, 120+64, screenwidth, 305);
                 }];
             }
                 break;
             case 2:
             {
-                
+                [self adressview];
+                [UIView animateWithDuration:0.3 animations:^{
+
+                    self.adressview.frame = CGRectMake(0, 120+64, screenwidth, 305);
+                }];
             }
                 break;
             case 3:
@@ -318,11 +334,39 @@
 {
     if (!_jobView) {
         _jobView = [[JobView alloc]initWithFrame:CGRectMake(screenwidth, 0, screenwidth, 305)];
+        BmobQuery * bmobquery = [BmobQuery queryWithClassName:@"IdentityType"];
+        [bmobquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
+            
+            _jobView.jobArray = array;
+            
+        }];
         _jobView.backgroundColor = [UIColor whiteColor];
         _jobView.delegate = self;
         [self.view addSubview:_jobView];
     }
     return _jobView;
+}
+-(adressView *)adressview
+{
+    if (!_adressview) {
+        _adressview = [[adressView alloc]initWithFrame:CGRectMake(screenwidth, 0, screenwidth, 305)];
+        BmobQuery * bmobquery = [BmobQuery queryWithClassName:@"Depart"];
+        [bmobquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
+            
+            _adressview.adressArray = array;
+            
+        }];
+
+        _adressview.backgroundColor = [UIColor whiteColor];
+        _adressview.delegate = self;
+        [self.view addSubview:_adressview];
+    }
+    return _adressview;
+}
+-(void)adressLabelText:(NSString *)text
+{
+    [self modifyUserWithKey:@"city" object:text];
+    [_tableview reloadData];
 }
 -(void)jobLabelText:(NSString *)text
 {

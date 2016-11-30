@@ -23,31 +23,9 @@
 {
     if (self = [super initWithFrame:frame]) {
         
-        NSArray * array = @[@"企业家",@"高管",@"公务员",@"企事业单位",@"军人",@"医生",@"教师",@"警察",@"运动达人",@"摄影师",@"发型师",@"金融",@"大一",@"大二",@"大三",@"大四",@"高一",@"高二",@"高三",@"自定义"];
         UIView * topline = [[UIView alloc]initWithFrame:CGRectMake(0, 0, screenwidth, 1)];
         topline.backgroundColor = [CorlorTransform colorWithHexString:@"#BBBBBB"];
         [self addSubview:topline];
-        [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(10+idx%4*((screenwidth-50)/4+10), 10+idx%5*50,(screenwidth-50)/4, 40)];
-            label.numberOfLines = 0;
-            label.text = [NSString stringWithFormat:@"%@",array[idx]];
-            if ([label.text isEqualToString:@"自定义"]) {
-                label.textColor = [CorlorTransform colorWithHexString:@"#400EEF"];
-            }
-            label.textAlignment = NSTextAlignmentCenter;
-            label.font = [FontOutSystem fontWithFangZhengSize:15.0];
-            label.layer.cornerRadius = 5;
-            label.layer.borderColor = [CorlorTransform colorWithHexString:@"#BABABA"].CGColor;
-            label.layer.borderWidth = 1;
-            label.clipsToBounds = YES;
-            label.tag = idx;
-            UITapGestureRecognizer * gesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(LabelTouch:)];
-            label.userInteractionEnabled = YES;
-            [label addGestureRecognizer:gesture];
-            
-            [self addSubview:label];
-            
-        }];
         
         UIView * centerline = [[UIView alloc]initWithFrame:CGRectMake(0, 260, screenwidth, 1)];
         centerline.backgroundColor = [CorlorTransform colorWithHexString:@"#BBBBBB"];
@@ -91,10 +69,43 @@
         [self.delegate jobLabelText:titlelabel.text];
     }
 }
+-(void)setJobArray:(NSArray *)jobArray
+{
+    
+    double lineNumber = jobArray.count/4.0;
+    int line = ceil(lineNumber);
+
+    [jobArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+       
+        BmobObject * objectBM = obj;
+
+        UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(10+idx%4*((screenwidth-50)/4+10), 10+idx/(line)*50,(screenwidth-50)/4, 40)];
+        label.numberOfLines = 0;
+        label.text = [NSString stringWithFormat:@"%@",[objectBM objectForKey:@"typeName"]];
+        if ([label.text isEqualToString:@"自定义"]) {
+            label.textColor = [CorlorTransform colorWithHexString:@"#400EEF"];
+        }
+        label.textAlignment = NSTextAlignmentCenter;
+        label.font = [FontOutSystem fontWithFangZhengSize:15.0];
+        label.layer.cornerRadius = 5;
+        label.layer.borderColor = [CorlorTransform colorWithHexString:@"#BABABA"].CGColor;
+        label.layer.borderWidth = 1;
+        label.clipsToBounds = YES;
+        label.tag = idx;
+        UITapGestureRecognizer * gesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(LabelTouch:)];
+        label.userInteractionEnabled = YES;
+        [label addGestureRecognizer:gesture];
+        
+        [self addSubview:label];
+
+        
+    }];
+}
 - (void)LabelTouch:(UITapGestureRecognizer *)gesture
 {
     titlelabel = (UILabel *)[gesture view];
     titlelabel.layer.borderColor = [CorlorTransform colorWithHexString:@"#48FA8D"].CGColor;
+    
 }
 
 @end

@@ -128,13 +128,15 @@
         }
     }else{
         //退出登录
-        
         [BmobUser logout];
-        UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-        RegisterViewController *lv = [story instantiateViewControllerWithIdentifier:@"register"];
-        [self presentViewController:lv animated:YES completion:^{
-            
-        }];
+
+        EMError * error = [[EMClient sharedClient] logout:YES];
+        if (!error) {
+            UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+            RegisterViewController *lv = [story instantiateViewControllerWithIdentifier:@"register"];
+            [self presentViewController:lv animated:YES completion:nil];
+
+        }
         
         
     }
