@@ -111,6 +111,7 @@
 		2BB4168F1DE6E7D5006E6DF4 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB4167E1DE6E7D5006E6DF4 /* UIImageView+WebCache.m */; };
 		2BB416901DE6E7D5006E6DF4 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB416801DE6E7D5006E6DF4 /* UIView+WebCacheOperation.m */; };
 		2BB416941DE6F9A7006E6DF4 /* JobView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB416931DE6F9A7006E6DF4 /* JobView.m */; };
+		2BC560B51DEFBAFE0006DE3F /* followViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC560B41DEFBAFE0006DE3F /* followViewController.m */; };
 		2BC9E2551DE56CEB00F7DAAD /* chooseSexView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC9E2541DE56CEB00F7DAAD /* chooseSexView.m */; };
 		2BC9E2591DE58D1500F7DAAD /* UserData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC9E2581DE58D1500F7DAAD /* UserData.m */; };
 		2BC9E25C1DE590F600F7DAAD /* PersonalSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC9E25B1DE590F600F7DAAD /* PersonalSettingViewController.m */; };
@@ -336,6 +337,8 @@
 		2BB416801DE6E7D5006E6DF4 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		2BB416921DE6F9A7006E6DF4 /* JobView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobView.h; sourceTree = "<group>"; };
 		2BB416931DE6F9A7006E6DF4 /* JobView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobView.m; sourceTree = "<group>"; };
+		2BC560B31DEFBAFE0006DE3F /* followViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = followViewController.h; sourceTree = "<group>"; };
+		2BC560B41DEFBAFE0006DE3F /* followViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = followViewController.m; sourceTree = "<group>"; };
 		2BC9E2531DE56CEB00F7DAAD /* chooseSexView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chooseSexView.h; sourceTree = "<group>"; };
 		2BC9E2541DE56CEB00F7DAAD /* chooseSexView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = chooseSexView.m; sourceTree = "<group>"; };
 		2BC9E2571DE58D1500F7DAAD /* UserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserData.h; sourceTree = "<group>"; };
@@ -1154,6 +1157,8 @@
 			children = (
 				2BFCAB701DDC6D410023FF1C /* playerMessageViewController.h */,
 				2BFCAB711DDC6D410023FF1C /* playerMessageViewController.m */,
+				2BC560B31DEFBAFE0006DE3F /* followViewController.h */,
+				2BC560B41DEFBAFE0006DE3F /* followViewController.m */,
 			);
 			name = "详细信息";
 			sourceTree = "<group>";
@@ -1359,6 +1364,7 @@
 				2BB416851DE6E7D5006E6DF4 /* SDWebImageCompat.m in Sources */,
 				2B7EDFD61DE2E120008CB078 /* RegisterViewController.m in Sources */,
 				2BB4168E1DE6E7D5006E6DF4 /* UIImageView+HighlightedWebCache.m in Sources */,
+				2BC560B51DEFBAFE0006DE3F /* followViewController.m in Sources */,
 				2B7EDFB11DE2AB49008CB078 /* HelpViewController.m in Sources */,
 				2BC9E25C1DE590F600F7DAAD /* PersonalSettingViewController.m in Sources */,
 				2B0972281DDD81360047C655 /* newEventsTableViewCell.m in Sources */,

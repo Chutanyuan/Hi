@@ -133,7 +133,8 @@
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewWaterfallLayout *)collectionViewLayout heightForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    return (_layout.itemWidth/5*6)*2;
+    return (_layout.itemWidth/5*6)*2+20;
+    
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
@@ -143,7 +144,6 @@
     CGRect frame = _collectionView.frame;
     frame.size.height = size.height;
     _collectionView.frame = frame;
-    
     [_tableview reloadData];
 }
 - (void)dealloc

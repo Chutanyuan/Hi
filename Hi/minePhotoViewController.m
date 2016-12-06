@@ -196,11 +196,11 @@
     self.headImage.image = image;
     
     UIImage *scaleImage = [ViewUtil imageByScalingToSize:CGSizeMake(200, 200) sourceImage:image];
-    BmobFile *file = [[BmobFile alloc] initWithFileName:@"photo.png" withFileData:UIImagePNGRepresentation(scaleImage)];
+    BmobFile *file = [[BmobFile alloc] initWithFileName:@"backGroundPhoto.png" withFileData:UIImagePNGRepresentation(scaleImage)];
     [file saveInBackgroundByDataSharding:^(BOOL isSuccessful, NSError *error) {
         if (isSuccessful) {
             
-            [self modifyUserWithKey:@"headPhoto" object:file.url];
+            [self modifyUserWithKey:@"backgroundPhotos" object:file.url];
             
         }else{
             

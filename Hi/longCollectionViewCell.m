@@ -8,7 +8,7 @@
 
 #import "longCollectionViewCell.h"
 
-@interface longCollectionViewCell ()
+@interface longCollectionViewCell ()<UITextViewDelegate>
 
 
 @property(nonatomic,strong)UIImageView * showImageView;
@@ -19,6 +19,11 @@
 @property(nonatomic,strong)UILabel * identity;
 @property(nonatomic,strong)UILabel * address;
 @property(nonatomic,strong)UILabel * heightOfPerson;
+
+@property(nonatomic,strong)UITextView * textview;
+@property(nonatomic,strong)UILabel * placeholdText;
+@property(nonatomic,strong)UIImageView * backgroundImage;
+
 
 @end
 
@@ -72,7 +77,22 @@
         _heightOfPerson.clipsToBounds = YES;
         [self addSubview:_heightOfPerson];
         
+        _backgroundImage = [[UIImageView alloc]init];
+        [self addSubview:_backgroundImage];
+        
+        
+        _textview = [[UITextView alloc]init];
+        _textview.delegate = self;
+        _textview.font = [FontOutSystem fontWithFangZhengSize:16.0];
+        [self addSubview:_textview];
+        
+        _placeholdText = [[UILabel alloc]init];
+        _placeholdText.font = [FontOutSystem fontWithFangZhengSize:16.0];
+        
+        _placeholdText.numberOfLines = 0;
+        [self addSubview:_placeholdText];
 
+        
     }
     return self;
 }
@@ -82,7 +102,7 @@
     NSLog(@"%@",username_bmob);
     
     
-    [_showImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",[username_bmob objectForKey:@"avatar"]]]];
+    [_showImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",[username_bmob objectForKey:@"headPhoto"]]]];
     _showImageView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.width);
     
     _addFriend.center = CGPointMake(self.frame.size.width-10-15, self.frame.size.width+(self.frame.size.height/2-self.frame.size.width)/2);
@@ -106,16 +126,36 @@
             
             _fansCount.frame = CGRectMake(10, self.frame.size.width+((self.frame.size.height/2-self.frame.size.width)/2)-size_fans.height/2, size_fans.width, size_fans.height);
             
-            _identity.text = [object objectForKey:@"userIdentity"];
+            _identity.text = [NSString stringWithFormat:@"%@",[object objectForKey:@"userIdentity"]];
 
-            NSLog(@"+++++++++++++++++++++++++++++++++++++++%@",_identity.text);
-            if (_identity.text.length<1) {
-                _identity.text = @"---skd[-adk[s";
+            if ([_identity.text isEqual:@""]) {
+                _identity.text = @"身份未设置";
             }
             
-            _identity.text = [object objectForKey:@"userIdentity"];
             CGSize size_Identity = [_identity.text sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:_identity.font,NSFontAttributeName, nil]];
             _identity.frame = CGRectMake(10, _centerLine.frame.origin.y+11, self.frame.size.width-20, size_Identity.height+10);
+            
+            _address.text = [NSString stringWithFormat:@"%@",[object objectForKey:@"city"]];
+            if ([_address.text isEqualToString:@""]) {
+                _address.text = @"区域未知";
+            }
+
+            _address.frame = CGRectMake(_identity.frame.origin.x, _identity.frame.origin.y+_identity.frame.size.height+10, _identity.frame.size.width, _identity.frame.size.height);
+            
+            _heightOfPerson.text = [NSString stringWithFormat:@"%@",[object objectForKey:@"height"]];
+            if ([_heightOfPerson.text isEqualToString:@""]||[_heightOfPerson.text isEqualToString:@"0"]) {
+                _heightOfPerson.text = @"身高未知";
+            }
+            _heightOfPerson.frame = CGRectMake(_address.frame.origin.x, _address.frame.size.height+_address.frame.origin.y, _address.frame.size.width, _address.frame.size.height);
+            
+            
+            _textview.frame = CGRectMake(_heightOfPerson.frame.origin.x+5, _heightOfPerson.frame.origin.y+_heightOfPerson.frame.size.height, _heightOfPerson.frame.size.width-10, self.frame.size.height-(_heightOfPerson.frame.origin.y+_heightOfPerson.frame.size.height));
+            
+            _placeholdText.text = @"输入申请加为好友的文字字数控制在36字内。使用“约吗？”等话语易被拉黑。";
+            CGSize size = CGSizeMake(_heightOfPerson.frame.size.width-15, 1000);
+            CGSize size_placehold = [_placeholdText.text boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObjectsAndKeys:_placeholdText.font,NSFontAttributeName, nil] context:nil].size;
+            _placeholdText.frame = CGRectMake(_textview.frame.origin.x+5, _textview.frame.origin.y+7, size_placehold.width, size_placehold.height);
+            
             
         }else{
             
@@ -123,5 +163,13 @@
     }];
     
     
+}
+-(void)textViewDidChange:(UITextView *)textView
+{
+    if (textView.text.length>0) {
+        _placeholdText.text = @"";
+    }else{
+        _placeholdText.text = @"输入申请加为好友的文字字数控制在36字内。使用“约吗？”等话语易被拉黑。";
+    }
 }
 @end

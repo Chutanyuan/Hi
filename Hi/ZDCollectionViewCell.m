@@ -41,10 +41,8 @@
 
 -(void)setUsername_bmob:(BmobUser *)username_bmob
 {
-    NSLog(@"%@",username_bmob);
-    
 
-    [_showImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",[username_bmob objectForKey:@"avatar"]]]];
+    [_showImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",[username_bmob objectForKey:@"headPhoto"]]]];
     _showImageView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.width);
     
     _addFriend.center = CGPointMake(self.frame.size.width-10-15, self.frame.size.width+(self.frame.size.height-self.frame.size.width)/2);
