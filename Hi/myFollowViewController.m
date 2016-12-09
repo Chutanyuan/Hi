@@ -133,7 +133,7 @@
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewWaterfallLayout *)collectionViewLayout heightForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    return (_layout.itemWidth/5*6)*2+20;
+    return (_layout.itemWidth/5*6)*2+20+10;
     
 }
 

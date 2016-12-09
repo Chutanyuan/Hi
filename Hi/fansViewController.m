@@ -7,6 +7,9 @@
 //
 
 #import "fansViewController.h"
+#import "UICollectionViewWaterfallLayout.h"
+#import "fansCollectionViewCell.h"
+
 
 @interface fansViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDataSource,UICollectionViewDelegateWaterfallLayout>
 {
@@ -15,7 +18,6 @@
 }
 @property (nonatomic,strong)UITableView * tableview;
 @property (nonatomic,strong)NSArray * dataArray;
-
 
 @end
 
@@ -69,7 +71,7 @@
         _collectionView.dataSource = self;
         _collectionView.backgroundColor = [CorlorTransform colorWithHexString:@"#D9D8D9"];
         _collectionView.scrollEnabled = NO;//禁止collection的滑动
-        [_collectionView registerClass:[ZDCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+        [_collectionView registerClass:[fansCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
         [cell.contentView addSubview:_collectionView];
         
         [_collectionView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
@@ -117,7 +119,7 @@
 
 - (UICollectionViewCell* )collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    ZDCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    fansCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     cell.username_bmob = _dataArray[indexPath.item];
     
     return cell;
@@ -131,7 +133,8 @@
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewWaterfallLayout *)collectionViewLayout heightForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    return _layout.itemWidth/5*6;
+    return (_layout.itemWidth/5*6)*2+20+50;
+    
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
@@ -141,7 +144,6 @@
     CGRect frame = _collectionView.frame;
     frame.size.height = size.height;
     _collectionView.frame = frame;
-    
     [_tableview reloadData];
 }
 - (void)dealloc

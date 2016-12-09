@@ -33,17 +33,15 @@
 /** Bmob 获取 _user 列表中的所有数据 */
 -(void)getdata{
     
-    BmobQuery * bmobquery = [BmobQuery queryWithClassName:@"_User"];
-    [bmobquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
-        if (!error) {
-            self.dataArray = array;
-            [self tableview];
-
-        }else{
-            NSLog(@"%@",error);
+    NSDictionary * sendDic = @{@"identity":@"-1",@"depart":@"-1",@"sex":@"1",@"username":@"15565864350",@"offset":@"0",@"limit":@"10"};
+    [BmobCloud callFunctionInBackground:@"getAroundWomen" withParameters:sendDic block:^(NSString * dataArray, NSError *error) {
+        if (error) {
+            NSLog(@"error %@",[error description]);
         }
-    }];
-
+        self.dataArray = [String_Array dictionaryWithJsonString:dataArray];
+        [self tableview];
+        
+    }] ;
 }
 -(UITableView *)tableview
 {
@@ -74,12 +72,8 @@
         _collectionView.scrollEnabled = NO;//禁止collection的滑动
         [_collectionView registerClass:[ZDCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
         [cell.contentView addSubview:_collectionView];
-        
         [_collectionView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
-
     }
-    
-    
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

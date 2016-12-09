@@ -45,6 +45,18 @@ UISearchBarDelegate,UISearchDisplayDelegate,headTableViewAction>
 #pragma mark - dataArr(模拟从服务器获取到的数据)
 - (NSArray *)serverDataArr{
     if (!_serverDataArr) {
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            //sayhello 为云端逻辑的函数名，
+            //num 为参数名，@1为 参数值
+            
+            id result = [BmobCloud callFunction:@"getMyFriends" withParameters:@{@"username":[NSString stringWithFormat:@"%@",[[BmobUser currentUser] objectForKey:@"username"]]}];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSLog(@"cloudFunction %@",result);
+                NSLog(@"cloudFunction %@",result);
+            });
+        });
+        
         _serverDataArr=@[@{@"portrait":@"1",@"name":@"1"},@{@"portrait":@"2",@"name":@"花无缺"},@{@"portrait":@"3",@"name":@"东方不败"},@{@"portrait":@"4",@"name":@"任我行"},@{@"portrait":@"5",@"name":@"逍遥王"},@{@"portrait":@"6",@"name":@"阿离"},@{@"portrait":@"13",@"name":@"百草堂"},@{@"portrait":@"8",@"name":@"三味书屋"},@{@"portrait":@"9",@"name":@"彩彩"},@{@"portrait":@"10",@"name":@"陈晨"},@{@"portrait":@"11",@"name":@"多多"},@{@"portrait":@"12",@"name":@"峨嵋山"},@{@"portrait":@"7",@"name":@"哥哥"},@{@"portrait":@"14",@"name":@"林俊杰"},@{@"portrait":@"15",@"name":@"足球"},@{@"portrait":@"16",@"name":@"58赶集"},@{@"portrait":@"17",@"name":@"搜房网"},@{@"portrait":@"18",@"name":@"欧弟"}];
     }
     return _serverDataArr;

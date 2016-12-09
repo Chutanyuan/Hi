@@ -38,7 +38,7 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
     NSArray * array = @[@"关注男生",@"关注女生",@"我关注的",@"粉丝"];
-    NSArray * imageArray = @[@"tabbar_mainframe",@"tabbar_contacts",@"tabbar_discover",@"tabbar_me"];
+    NSArray * imageArray = @[@"man",@"women",@"addfriend",@"people"];
     cell.textLabel.text = array[indexPath.row];
     cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",imageArray[indexPath.row]]];
     return cell;

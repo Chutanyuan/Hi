@@ -9,6 +9,8 @@
 #import "followWomanViewController.h"
 #import "UICollectionViewWaterfallLayout.h"
 #import "ZDCollectionViewCell.h"
+#import "followViewController.h"
+
 
 @interface followWomanViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDataSource,UICollectionViewDelegateWaterfallLayout>
 {
@@ -31,17 +33,15 @@
 /** Bmob 获取 _user 列表中的所有数据 */
 -(void)getdata{
     
-    BmobQuery * bmobquery = [BmobQuery queryWithClassName:@"_User"];
-    [bmobquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
-        if (!error) {
-            self.dataArray = array;
-            [self tableview];
-            
-        }else{
-            NSLog(@"%@",error);
+    NSDictionary * sendDic = @{@"identity":@"-1",@"depart":@"-1",@"sex":@"2",@"username":@"15565864350",@"offset":@"0",@"limit":@"10"};
+    [BmobCloud callFunctionInBackground:@"getAroundWomen" withParameters:sendDic block:^(NSString * dataArray, NSError *error) {
+        if (error) {
+            NSLog(@"error %@",[error description]);
         }
-    }];
-    
+        self.dataArray = [String_Array dictionaryWithJsonString:dataArray];
+        [self tableview];
+        
+    }] ;
 }
 -(UITableView *)tableview
 {
@@ -127,6 +127,9 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"第%ld个",(long)indexPath.item);
+    followViewController * followVC = [[followViewController alloc]init];
+    followVC.username_bmob = _dataArray[indexPath.item];
+    [self.navigationController pushViewController:followVC animated:YES];
 }
 #pragma mark - UICollectionViewDelegateWaterfallLayout
 

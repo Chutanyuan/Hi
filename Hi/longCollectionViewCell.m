@@ -146,12 +146,18 @@
             if ([_heightOfPerson.text isEqualToString:@""]||[_heightOfPerson.text isEqualToString:@"0"]) {
                 _heightOfPerson.text = @"身高未知";
             }
-            _heightOfPerson.frame = CGRectMake(_address.frame.origin.x, _address.frame.size.height+_address.frame.origin.y, _address.frame.size.width, _address.frame.size.height);
+            _heightOfPerson.frame = CGRectMake(_address.frame.origin.x, _address.frame.size.height+_address.frame.origin.y+10, _address.frame.size.width, _address.frame.size.height);
             
             
             _textview.frame = CGRectMake(_heightOfPerson.frame.origin.x+5, _heightOfPerson.frame.origin.y+_heightOfPerson.frame.size.height, _heightOfPerson.frame.size.width-10, self.frame.size.height-(_heightOfPerson.frame.origin.y+_heightOfPerson.frame.size.height));
+//            [_textview.layer setBorderColor:[CorlorTransform colorWithHexString:@"#BABABA"].CGColor];
+//            [_textview.layer setBorderWidth:0.5];
+//            _textview.layer.cornerRadius = 5;
+//            _textview.clipsToBounds = YES;
+            
             
             _placeholdText.text = @"输入申请加为好友的文字字数控制在36字内。使用“约吗？”等话语易被拉黑。";
+            _placeholdText.textColor = [CorlorTransform colorWithHexString:@"#BABABA"];
             CGSize size = CGSizeMake(_heightOfPerson.frame.size.width-15, 1000);
             CGSize size_placehold = [_placeholdText.text boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObjectsAndKeys:_placeholdText.font,NSFontAttributeName, nil] context:nil].size;
             _placeholdText.frame = CGRectMake(_textview.frame.origin.x+5, _textview.frame.origin.y+7, size_placehold.width, size_placehold.height);

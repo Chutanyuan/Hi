@@ -25,10 +25,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = [NSString stringWithFormat:@"%@",[_username_bmob objectForKey:@"nickName"]];
-
+    model_dic * userDic = [[model_dic alloc]initWithDictionary:self.username_bmob];
+    self.title = [NSString stringWithFormat:@"%@",userDic.nickName];
     self.view.backgroundColor = [UIColor blackColor];
-    NSLog(@"%@",self.username_bmob);
 
     [self tableview];
     
@@ -69,6 +68,10 @@
     }
     return cell;
 }
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 10;
+}
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return screenheight;
@@ -83,4 +86,5 @@
     
     return view;
 }
+
 @end
