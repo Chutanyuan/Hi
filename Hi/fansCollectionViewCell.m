@@ -9,11 +9,14 @@
 #import "fansCollectionViewCell.h"
 
 @interface fansCollectionViewCell ()<UITextViewDelegate>
+{
+    NSString * otherusername;
+}
 
 
 @property(nonatomic,strong)UIImageView * showImageView;
 @property(nonatomic,strong)UILabel * fansCount;
-@property(nonatomic,strong)UIImageView * addFriend;
+@property(nonatomic,strong)UIButton * addFriend;
 @property(nonatomic,strong)UIView * centerLine;
 
 @property(nonatomic,strong)UILabel * identity;
@@ -45,7 +48,8 @@
         _fansCount.font = [FontOutSystem fontWithFangZhengZhenSize:14.0];
         [self addSubview:_fansCount];
         
-        _addFriend = [[UIImageView alloc]init];
+        _addFriend = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_addFriend setImage:[UIImage imageNamed:@"add"] forState:UIControlStateNormal];
         [self addSubview:_addFriend];
         
         _centerLine = [[UIView alloc]initWithFrame:CGRectMake(0, self.frame.size.height/2, self.frame.size.width, 1)];
@@ -110,74 +114,63 @@
     return self;
 }
 
--(void)setUsername_bmob:(BmobUser *)username_bmob
+-(void)setUsername_bmob:(NSDictionary *)username_bmob
 {
-    NSLog(@"%@",username_bmob);
-    
-    
-    [_showImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",[username_bmob objectForKey:@"headPhoto"]]]];
+    model_dic * dic = [[model_dic alloc]initWithDictionary:username_bmob];
+    [_showImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",dic.headPhoto]]];
     _showImageView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.width);
     
     _addFriend.center = CGPointMake(self.frame.size.width-10-15, self.frame.size.width+(self.frame.size.height/2-self.frame.size.width)/2);
     _addFriend.bounds = CGRectMake(0, 0, 30, 30);
-    _addFriend.backgroundColor = [UIColor blackColor];
+    
+//    otherusername = userDic.username;
+    
+    [_addFriend addTarget:self action:@selector(addFriendAction:) forControlEvents:UIControlEventTouchUpInside];
     
     _fansCount.frame = CGRectMake(10, self.frame.size.width, self.frame.size.width, self.frame.size.height/2-self.frame.size.width);
-    BmobQuery * query = [BmobQuery queryWithClassName:@"_User"];
+    _fansCount.text = [NSString stringWithFormat:@"粉丝：%ld人",dic.fansNumber];
+    CGSize size_fans = [_fansCount.text sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:_fansCount.font,NSFontAttributeName, nil]];
     
-    [query getObjectInBackgroundWithId:[NSString stringWithFormat:@"%@",[username_bmob objectForKey:@"objectId"]] block:^(BmobObject *object, NSError *error) {
-        if (!error) {
-            
-            NSArray * fansArray = [object objectForKey:@"fans"];
-            
-            _fansCount.text = [NSString stringWithFormat:@"粉丝：%ld人",fansArray.count];
-            CGSize size_fans = [_fansCount.text sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:_fansCount.font,NSFontAttributeName, nil]];
-            
-            if (size_fans.width>_addFriend.frame.origin.x-15) {
-                size_fans.width = _addFriend.frame.origin.x-15;
-            }
-            
-            _fansCount.frame = CGRectMake(10, self.frame.size.width+((self.frame.size.height/2-self.frame.size.width)/2)-size_fans.height/2, size_fans.width, size_fans.height);
-            
-            _identity.text = [NSString stringWithFormat:@"%@",[object objectForKey:@"userIdentity"]];
-            
-            if ([_identity.text isEqual:@""]) {
-                _identity.text = @"身份未设置";
-            }
-            
-            CGSize size_Identity = [_identity.text sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:_identity.font,NSFontAttributeName, nil]];
-            _identity.frame = CGRectMake(10, _centerLine.frame.origin.y+11, self.frame.size.width-20, size_Identity.height+10);
-            
-            _address.text = [NSString stringWithFormat:@"%@",[object objectForKey:@"city"]];
-            if ([_address.text isEqualToString:@""]) {
-                _address.text = @"区域未知";
-            }
-            
-            _address.frame = CGRectMake(_identity.frame.origin.x, _identity.frame.origin.y+_identity.frame.size.height+10, _identity.frame.size.width, _identity.frame.size.height);
-            
-            _heightOfPerson.text = [NSString stringWithFormat:@"%@",[object objectForKey:@"height"]];
-            if ([_heightOfPerson.text isEqualToString:@""]||[_heightOfPerson.text isEqualToString:@"0"]) {
-                _heightOfPerson.text = @"身高未知";
-            }
-            _heightOfPerson.frame = CGRectMake(_address.frame.origin.x, _address.frame.size.height+_address.frame.origin.y+10, _address.frame.size.width, _address.frame.size.height);
-            
-            
-            _textview.frame = CGRectMake(_heightOfPerson.frame.origin.x+5, _heightOfPerson.frame.origin.y+_heightOfPerson.frame.size.height, _heightOfPerson.frame.size.width-10, self.frame.size.height-(_heightOfPerson.frame.origin.y+_heightOfPerson.frame.size.height)-50);
-            
-            _placeholdText.text = @"输入申请加为好友的文字字数控制在36字内。使用“约吗？”等话语易被拉黑。";
-            _placeholdText.textColor = [CorlorTransform colorWithHexString:@"#BABABA"];
-            CGSize size = CGSizeMake(_heightOfPerson.frame.size.width-15, 1000);
-            CGSize size_placehold = [_placeholdText.text boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObjectsAndKeys:_placeholdText.font,NSFontAttributeName, nil] context:nil].size;
-            _placeholdText.frame = CGRectMake(_textview.frame.origin.x+5, _textview.frame.origin.y+7, size_placehold.width, _textview.frame.size.height);
-            
-            _delegateFriends.frame = CGRectMake(_heightOfPerson.frame.origin.x, _textview.frame.origin.y+_textview.frame.size.height+10, _heightOfPerson.frame.size.width, _heightOfPerson.frame.size.height);
-            _delegateFriends.text = @"打入冷宫";
-            
-            
-        }else{
-            
-        }
-    }];
+    if (size_fans.width>_addFriend.frame.origin.x-15) {
+        size_fans.width = _addFriend.frame.origin.x-15;
+    }
+    
+    _fansCount.frame = CGRectMake(10, self.frame.size.width+((self.frame.size.height/2-self.frame.size.width)/2)-size_fans.height/2, size_fans.width, size_fans.height);
+    
+    _identity.text = [NSString stringWithFormat:@"%@",dic.userIdentity];
+    
+    if ([_identity.text isEqual:@""]) {
+        _identity.text = @"身份未设置";
+    }
+    
+    CGSize size_Identity = [_identity.text sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:_identity.font,NSFontAttributeName, nil]];
+    _identity.frame = CGRectMake(10, _centerLine.frame.origin.y+11, self.frame.size.width-20, size_Identity.height+10);
+    
+    _address.text = [NSString stringWithFormat:@"%@",dic.city];
+    if ([_address.text isEqualToString:@""]) {
+        _address.text = @"区域未知";
+    }
+    
+    _address.frame = CGRectMake(_identity.frame.origin.x, _identity.frame.origin.y+_identity.frame.size.height+10, _identity.frame.size.width, _identity.frame.size.height);
+    
+    _heightOfPerson.text = [NSString stringWithFormat:@"%@",dic.height];
+    if ([_heightOfPerson.text isEqualToString:@""]||[_heightOfPerson.text isEqualToString:@"0"]) {
+        _heightOfPerson.text = @"身高未知";
+    }
+    _heightOfPerson.frame = CGRectMake(_address.frame.origin.x, _address.frame.size.height+_address.frame.origin.y+10, _address.frame.size.width, _address.frame.size.height);
+    
+    
+    _textview.frame = CGRectMake(_heightOfPerson.frame.origin.x+5, _heightOfPerson.frame.origin.y+_heightOfPerson.frame.size.height, _heightOfPerson.frame.size.width-10, self.frame.size.height-(_heightOfPerson.frame.origin.y+_heightOfPerson.frame.size.height)-50);
+    
+    _placeholdText.text = @"输入申请加为好友的文字字数控制在36字内。使用“约吗？”等话语易被拉黑。";
+    _placeholdText.textColor = [CorlorTransform colorWithHexString:@"#BABABA"];
+    CGSize size = CGSizeMake(_heightOfPerson.frame.size.width-15, 1000);
+    CGSize size_placehold = [_placeholdText.text boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObjectsAndKeys:_placeholdText.font,NSFontAttributeName, nil] context:nil].size;
+    _placeholdText.frame = CGRectMake(_textview.frame.origin.x+5, _textview.frame.origin.y+7, size_placehold.width, _textview.frame.size.height);
+    
+    _delegateFriends.frame = CGRectMake(_heightOfPerson.frame.origin.x, _textview.frame.origin.y+_textview.frame.size.height+10, _heightOfPerson.frame.size.width, _heightOfPerson.frame.size.height);
+    _delegateFriends.text = @"打入冷宫";
+    
     
     
 }
@@ -189,4 +182,22 @@
         _placeholdText.text = @"输入申请加为好友的文字字数控制在36字内。使用“约吗？”等话语易被拉黑。";
     }
 }
+- (void)addFriendAction:(UIButton *)sender
+{
+    /**
+     添加关注
+     */
+    NSString * myusername = [[BmobUser currentUser] objectForKey:@"username"];
+    NSDictionary * sendDic = @{@"from":myusername,@"to":otherusername};
+    [BmobCloud callFunctionInBackground:@"addFocus" withParameters:sendDic block:^(id object, NSError *error) {
+        if (error) {
+            NSLog(@"error %@",[error description]);
+        }
+        NSLog(@"%@",object);
+    }] ;
+    
+    
+}
+
+
 @end

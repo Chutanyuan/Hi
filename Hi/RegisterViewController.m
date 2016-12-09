@@ -221,7 +221,7 @@
 
     }else if (_registeButton.tag == 100){
         
-        EMError *error = [[EMClient sharedClient] registerWithUsername:PhoneNumber password:@"111111"];
+        EMError *error = [[EMClient sharedClient] registerWithUsername:PhoneNumber password:@"123456"];
         NSLog(@"%@",error);
         if (error==nil) {
             [ShowMessage showMessage:@"注册成功请登录"];

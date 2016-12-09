@@ -9,7 +9,9 @@
 #import "ZDCollectionViewCell.h"
 
 @interface ZDCollectionViewCell ()
-
+{
+    NSString * otherusername;
+}
 
 @property(nonatomic,strong)UIImageView * showImageView;
 @property(nonatomic,strong)UILabel * fansCount;
@@ -35,7 +37,6 @@
         _addFriend = [UIButton buttonWithType:UIButtonTypeCustom];
         [_addFriend setImage:[UIImage imageNamed:@"add"] forState:UIControlStateNormal];
         [self addSubview:_addFriend];
-        [_addFriend addTarget:self action:@selector(addFriendAction:) forControlEvents:UIControlEventTouchUpInside];
 
         
     }
@@ -52,6 +53,11 @@
     _addFriend.center = CGPointMake(self.frame.size.width-10-15, self.frame.size.width+(self.frame.size.height-self.frame.size.width)/2);
     _addFriend.bounds = CGRectMake(0, 0, 30, 30);
     
+    otherusername = userDic.username;
+    
+    [_addFriend addTarget:self action:@selector(addFriendAction:) forControlEvents:UIControlEventTouchUpInside];
+
+    
     _fansCount.frame = CGRectMake(10, self.frame.size.width, self.frame.size.width, self.frame.size.height-self.frame.size.width);
     _fansCount.text = [NSString stringWithFormat:@"粉丝：%@人",userDic.fansNumber];
     CGSize size_fans = [_fansCount.text sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:_fansCount.font,NSFontAttributeName, nil]];
@@ -67,5 +73,17 @@
     /**
         添加关注
      */
+    NSString * myusername = [[BmobUser currentUser] objectForKey:@"username"];
+    
+    NSLog(@"\n%@\n%@",myusername,otherusername);
+    NSDictionary * sendDic = @{@"from":myusername,@"to":otherusername};
+    [BmobCloud callFunctionInBackground:@"addFocus" withParameters:sendDic block:^(id object, NSError *error) {
+        if (error) {
+            NSLog(@"error %@",[error description]);
+        }
+        NSLog(@"%@",object);
+    }] ;
+
+    
 }
 @end

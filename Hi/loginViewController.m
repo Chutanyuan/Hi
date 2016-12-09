@@ -158,7 +158,7 @@
 - (void)loginButtonCLick
 {
     
-    [[EMClient sharedClient] loginWithUsername:_phoneNumber.text password:@"111111" completion:^(NSString *aUsername, EMError *aError) {
+    [[EMClient sharedClient] loginWithUsername:_phoneNumber.text password:@"123456" completion:^(NSString *aUsername, EMError *aError) {
         if (!aError) {
             [[EMClient sharedClient].options setIsAutoLogin:YES];
             [ShowMessage showMessage:@"换新登录成功"];

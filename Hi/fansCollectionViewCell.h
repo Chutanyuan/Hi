@@ -10,6 +10,6 @@
 
 @interface fansCollectionViewCell : UICollectionViewCell
 
-@property(nonatomic,strong)BmobUser * username_bmob;
+@property(nonatomic,strong)NSDictionary * username_bmob;
 
 @end

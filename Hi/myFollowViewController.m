@@ -10,7 +10,7 @@
 #import "UICollectionViewWaterfallLayout.h"
 #import "longCollectionViewCell.h"
 
-@interface myFollowViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDataSource,UICollectionViewDelegateWaterfallLayout>
+@interface myFollowViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDataSource,UICollectionViewDelegateWaterfallLayout,longClooectionViewCellDelegate>
 {
     UICollectionViewWaterfallLayout * _layout;
     UICollectionView * _collectionView;
@@ -31,17 +31,27 @@
 }
 /** Bmob 获取 _user 列表中的所有数据 */
 -(void)getdata{
-    
-    BmobQuery * bmobquery = [BmobQuery queryWithClassName:@"_User"];
-    [bmobquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
-        if (!error) {
-            self.dataArray = array;
-            [self tableview];
-            
-        }else{
-            NSLog(@"%@",error);
+    BmobUser * bmobuser = [BmobUser currentUser];
+    NSString * username = [bmobuser objectForKey:@"username"];
+    NSDictionary * sendDic = @{@"identity":@"-1",@"depart":@"-1",@"sex":@"0",@"username":username,@"offset":@"0",@"limit":@"10"};
+    [BmobCloud callFunctionInBackground:@"getMyFocusPeople" withParameters:sendDic block:^(NSString * dataArray, NSError *error) {
+        if (error) {
+            NSLog(@"error %@",[error description]);
         }
-    }];
+        self.dataArray = [String_Array dictionaryWithJsonString:dataArray];
+        
+        if (self.dataArray.count>0) {
+            [self tableview];
+        }else{
+            UILabel * label = [[UILabel alloc]initWithFrame:self.view.frame];
+            label.text = @"尚未关注他人";
+            label.textAlignment = NSTextAlignmentCenter;
+            label.font = [FontOutSystem fontWithFangZhengZhenSize:15.0];
+            label.textColor = [CorlorTransform colorWithHexString:@"#686868"];
+            [self.view addSubview:label];
+        }
+        
+    }] ;
     
 }
 -(UITableView *)tableview
@@ -121,7 +131,7 @@
     
     longCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     cell.username_bmob = _dataArray[indexPath.item];
-    
+    cell.delegate = self;
     return cell;
     
 }
@@ -151,6 +161,31 @@
     [_collectionView removeObserver:self forKeyPath:@"contentSize"];
 }
 
+-(void)removeFocusSuccess:(UIButton *)sender
+{
+    BmobUser * bmobuser = [BmobUser currentUser];
+    NSString * username = [bmobuser objectForKey:@"username"];
+    NSDictionary * sendDic = @{@"identity":@"-1",@"depart":@"-1",@"sex":@"0",@"username":username,@"offset":@"0",@"limit":@"10"};
+    [BmobCloud callFunctionInBackground:@"getMyFocusPeople" withParameters:sendDic block:^(NSString * dataArray, NSError *error) {
+        if (error) {
+            NSLog(@"error %@",[error description]);
+        }
+        self.dataArray = [String_Array dictionaryWithJsonString:dataArray];
+        
+        if (self.dataArray.count>0) {
+            [_collectionView reloadData];
+        }else{
+            UILabel * label = [[UILabel alloc]initWithFrame:self.view.frame];
+            label.text = @"小窝里已经没有人了哟";
+            label.textAlignment = NSTextAlignmentCenter;
+            label.font = [FontOutSystem fontWithFangZhengZhenSize:15.0];
+            label.textColor = [CorlorTransform colorWithHexString:@"#686868"];
+            [self.view addSubview:label];
+        }
+        
+    }] ;
+
+}
 /*
 #pragma mark - Navigation
 

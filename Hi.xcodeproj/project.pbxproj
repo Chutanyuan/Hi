@@ -65,8 +65,10 @@
 		2B5FB47B1DDC5B2400C80152 /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B5FB45A1DDC5B2400C80152 /* 7.png */; };
 		2B5FB47C1DDC5B2400C80152 /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B5FB45B1DDC5B2400C80152 /* 8.png */; };
 		2B5FB47D1DDC5B2400C80152 /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B5FB45C1DDC5B2400C80152 /* 9.png */; };
-		2B5FB4801DDC5B4E00C80152 /* ContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5FB47F1DDC5B4E00C80152 /* ContactTableViewCell.m */; };
 		2B5FB4841DDC602800C80152 /* headView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5FB4831DDC602800C80152 /* headView.m */; };
+		2B60DDF61DFAAC4300633594 /* BMChineseSort.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B60DDF51DFAAC4300633594 /* BMChineseSort.m */; };
+		2B60DDF91DFAAC8600633594 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B60DDF81DFAAC8600633594 /* Person.m */; };
+		2B60DDFC1DFAC51400633594 /* friendVCTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B60DDFB1DFAC51400633594 /* friendVCTableViewCell.m */; };
 		2B748A7B1DEEA1E80063294F /* longCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B748A7A1DEEA1E80063294F /* longCollectionViewCell.m */; };
 		2B7EDFA51DE2AABD008CB078 /* AccountSafeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7EDFA41DE2AABD008CB078 /* AccountSafeViewController.m */; };
 		2B7EDFA81DE2AADF008CB078 /* messageNoticViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7EDFA71DE2AADF008CB078 /* messageNoticViewController.m */; };
@@ -265,10 +267,14 @@
 		2B5FB45A1DDC5B2400C80152 /* 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7.png; sourceTree = "<group>"; };
 		2B5FB45B1DDC5B2400C80152 /* 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8.png; sourceTree = "<group>"; };
 		2B5FB45C1DDC5B2400C80152 /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9.png; sourceTree = "<group>"; };
-		2B5FB47E1DDC5B4E00C80152 /* ContactTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactTableViewCell.h; sourceTree = "<group>"; };
-		2B5FB47F1DDC5B4E00C80152 /* ContactTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactTableViewCell.m; sourceTree = "<group>"; };
 		2B5FB4821DDC602800C80152 /* headView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = headView.h; sourceTree = "<group>"; };
 		2B5FB4831DDC602800C80152 /* headView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = headView.m; sourceTree = "<group>"; };
+		2B60DDF41DFAAC4300633594 /* BMChineseSort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMChineseSort.h; sourceTree = "<group>"; };
+		2B60DDF51DFAAC4300633594 /* BMChineseSort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMChineseSort.m; sourceTree = "<group>"; };
+		2B60DDF71DFAAC8600633594 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		2B60DDF81DFAAC8600633594 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		2B60DDFA1DFAC51400633594 /* friendVCTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = friendVCTableViewCell.h; sourceTree = "<group>"; };
+		2B60DDFB1DFAC51400633594 /* friendVCTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = friendVCTableViewCell.m; sourceTree = "<group>"; };
 		2B748A791DEEA1E80063294F /* longCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = longCollectionViewCell.h; sourceTree = "<group>"; };
 		2B748A7A1DEEA1E80063294F /* longCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = longCollectionViewCell.m; sourceTree = "<group>"; };
 		2B7EDFA31DE2AABD008CB078 /* AccountSafeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountSafeViewController.h; sourceTree = "<group>"; };
@@ -658,6 +664,7 @@
 		2B5FB3FC1DDC3C1D00C80152 /* tool */ = {
 			isa = PBXGroup;
 			children = (
+				2B60DDF31DFAAC4300633594 /* BMChineseStringSort */,
 				2BA9D7961DFA69FF00A94E7C /* SBJSON */,
 				2BE549D31DED2CE800FFD8AB /* HyphenateFullSDK */,
 				2BB416911DE6E7E8006E6DF4 /* ZIDY */,
@@ -863,12 +870,21 @@
 		2B5FB4811DDC600900C80152 /* cell headerView */ = {
 			isa = PBXGroup;
 			children = (
-				2B5FB47E1DDC5B4E00C80152 /* ContactTableViewCell.h */,
-				2B5FB47F1DDC5B4E00C80152 /* ContactTableViewCell.m */,
 				2B5FB4821DDC602800C80152 /* headView.h */,
 				2B5FB4831DDC602800C80152 /* headView.m */,
+				2B60DDFA1DFAC51400633594 /* friendVCTableViewCell.h */,
+				2B60DDFB1DFAC51400633594 /* friendVCTableViewCell.m */,
 			);
 			name = "cell headerView";
+			sourceTree = "<group>";
+		};
+		2B60DDF31DFAAC4300633594 /* BMChineseStringSort */ = {
+			isa = PBXGroup;
+			children = (
+				2B60DDF41DFAAC4300633594 /* BMChineseSort.h */,
+				2B60DDF51DFAAC4300633594 /* BMChineseSort.m */,
+			);
+			path = BMChineseStringSort;
 			sourceTree = "<group>";
 		};
 		2B7EDF9C1DE2A7A9008CB078 /* 关于嗨 */ = {
@@ -1124,6 +1140,8 @@
 			children = (
 				2BC9E2571DE58D1500F7DAAD /* UserData.h */,
 				2BC9E2581DE58D1500F7DAAD /* UserData.m */,
+				2B60DDF71DFAAC8600633594 /* Person.h */,
+				2B60DDF81DFAAC8600633594 /* Person.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -1217,6 +1235,8 @@
 			children = (
 				2BFCAB691DDC669D0023FF1C /* myFollowViewController.h */,
 				2BFCAB6A1DDC669D0023FF1C /* myFollowViewController.m */,
+				2B748A791DEEA1E80063294F /* longCollectionViewCell.h */,
+				2B748A7A1DEEA1E80063294F /* longCollectionViewCell.m */,
 			);
 			name = "我关注的";
 			sourceTree = "<group>";
@@ -1237,8 +1257,6 @@
 				2BFCAB641DDC66830023FF1C /* followManViewController.m */,
 				2BE54A1D1DED7CD800FFD8AB /* ZDCollectionViewCell.h */,
 				2BE54A1E1DED7CD800FFD8AB /* ZDCollectionViewCell.m */,
-				2B748A791DEEA1E80063294F /* longCollectionViewCell.h */,
-				2B748A7A1DEEA1E80063294F /* longCollectionViewCell.m */,
 				2B2887CB1DF66156004A8FC1 /* fansCollectionViewCell.h */,
 				2B2887CC1DF66156004A8FC1 /* fansCollectionViewCell.m */,
 			);
@@ -1414,7 +1432,6 @@
 			files = (
 				2B5FB4631DDC5B2400C80152 /* JSONHTTPClient.m in Sources */,
 				2B5FB4171DDC4D5600C80152 /* FontOutSystem.m in Sources */,
-				2B5FB4801DDC5B4E00C80152 /* ContactTableViewCell.m in Sources */,
 				2BFCAB6B1DDC669D0023FF1C /* myFollowViewController.m in Sources */,
 				2BB416831DE6E7D5006E6DF4 /* NSData+ImageContentType.m in Sources */,
 				2B5FB3D31DDC379700C80152 /* Hi.xcdatamodeld in Sources */,
@@ -1431,6 +1448,7 @@
 				2BB416941DE6F9A7006E6DF4 /* JobView.m in Sources */,
 				2B5FB3CD1DDC379700C80152 /* ViewController.m in Sources */,
 				2BB416881DE6E7D5006E6DF4 /* SDWebImageDownloaderOperation.m in Sources */,
+				2B60DDF91DFAAC8600633594 /* Person.m in Sources */,
 				2BB4168D1DE6E7D5006E6DF4 /* UIImage+MultiFormat.m in Sources */,
 				2B4538881DE810D600E1226A /* minePhotoHeadView.m in Sources */,
 				2BB4163F1DE6C094006E6DF4 /* settingRightTitleCell.m in Sources */,
@@ -1463,6 +1481,8 @@
 				2B7EDFA51DE2AABD008CB078 /* AccountSafeViewController.m in Sources */,
 				2BB416851DE6E7D5006E6DF4 /* SDWebImageCompat.m in Sources */,
 				2B7EDFD61DE2E120008CB078 /* RegisterViewController.m in Sources */,
+				2B60DDF61DFAAC4300633594 /* BMChineseSort.m in Sources */,
+				2B60DDFC1DFAC51400633594 /* friendVCTableViewCell.m in Sources */,
 				2BB4168E1DE6E7D5006E6DF4 /* UIImageView+HighlightedWebCache.m in Sources */,
 				2BC560B51DEFBAFE0006DE3F /* followViewController.m in Sources */,
 				2B7EDFB11DE2AB49008CB078 /* HelpViewController.m in Sources */,

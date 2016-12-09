@@ -8,9 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol longClooectionViewCellDelegate <NSObject>
+
+-(void)removeFocusSuccess:(UIButton *)sender;
+
+@end
+
 @interface longCollectionViewCell : UICollectionViewCell
 
 
-@property(nonatomic,strong)BmobUser * username_bmob;
+@property(nonatomic,strong)NSDictionary * username_bmob;
+@property(nonatomic,weak)id<longClooectionViewCellDelegate>delegate;
+
 
 @end
